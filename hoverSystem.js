@@ -1,6 +1,3 @@
-//zmenit kod tak ze bude bunkam priradovat id operatora a class s dnom takto viem
-//lepsie selektovat
-
 let leftPanelSelectedId
 let topPanelDaySelectedId
 let topPanelMonthSelectedId
@@ -24,3 +21,17 @@ $('div').hover((event)=>{
     leftPanelSelectedId.style.color = 'white'
     topPanelMonthSelectedId.style.color = 'white'
 })
+
+stylingWeekends()
+function stylingWeekends() {
+    for (let x = 0; x < sundayArray.length; x++) {
+        styleWeekend(x)
+    }
+}
+
+function styleWeekend(x) {
+    for (let i = 1; i < operatorsArray.length +1; i++) {
+        let y = document.getElementById('Operator ' + i + ' ' + sundayArray[x])
+        y.style.backgroundColor = '#666699'
+    }
+}

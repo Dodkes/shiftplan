@@ -1,9 +1,12 @@
 const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 const operatorsArray = []
+const sundayArray = []
+const saturdayArray = []
 let monthDays
 let weekend
 let getNextMonth = new Date().getMonth()+1
 let gridColumns = ''
+
 
 //GET FIRST DAY OF THE NEXT MONTH
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -72,6 +75,12 @@ console.log('is the weekend? ' + weekend)
             } else {
                 dayLoop++
             }
+
+            if (weekDays[dayLoop] === 'Sunday') {
+                let saturdayDayNumber = weekDay.id.split(' ')
+                sundayArray.push(saturdayDayNumber[1])
+            }
+
         }
     }
 
