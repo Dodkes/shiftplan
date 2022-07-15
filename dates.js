@@ -7,6 +7,13 @@ let weekend
 let getNextMonth = new Date().getMonth()+1
 let gridColumns = ''
 
+//BUDE TREBA ZMENIT VSETKY PREMENNE KTORE OBSAHUJU NIECO S DATUMOM NA TO CO BUDE BUDUCI ROK V JANUARI
+// if (getNextMonth == 12) {
+//     const newDate = new Date(new Date().setFullYear(new Date().getFullYear() + 1))
+//     newDate.setMonth(0)
+//     getNextMonth = newDate.getMonth()+1
+//     console.log(getNextMonth)
+// }
 
 //GET FIRST DAY OF THE NEXT MONTH
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
@@ -76,11 +83,15 @@ console.log('is the weekend? ' + weekend)
                 dayLoop++
             }
 
-            if (weekDays[dayLoop] === 'Sunday') {
-                let saturdayDayNumber = weekDay.id.split(' ')
-                sundayArray.push(saturdayDayNumber[1])
+            if (dayLoop === 1) {
+                let sundayDayNumber = weekDay.id.split(' ')
+                sundayArray.push(sundayDayNumber[1])
             }
 
+            if (dayLoop === 0) {
+                let saturdayDayNumber = weekDay.id.split(' ')
+                saturdayArray.push(saturdayDayNumber[1])
+            }
         }
     }
 

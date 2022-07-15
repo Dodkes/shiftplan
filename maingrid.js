@@ -53,39 +53,39 @@ $(maingridContainer).children().dblclick((event)=>{
     if (clickedIdSplit[0] === 'Operator') {
         event.target.style.background = 'none'
         event.target.textContent = '-'
-        event.target.style.color = 'white'
+        event.target.style.color = white
     }
 })
 
 //Invoked functions - tu budem davat podmienky a pristupovat k bunkam
 function dayshiftFunction(event) {
-    event.target.style.background = 'linear-gradient(to right, #e0eafc, #cfdef3)'
+    event.target.style.background = dayShiftBackgroundColor
     event.target.textContent = 'D'
     event.target.style.color = 'black'
 }
 
 function nightshiftFunction(event) {
-    event.target.style.background = 'linear-gradient(to right, #e0eafc, #cfdef3)'
+    event.target.style.background = nightShiftBackgroundColor
     event.target.textContent = 'N'
     event.target.style.color = 'black'
 }
 
 function vacationFunction(event) {
-    event.target.style.background = 'linear-gradient(to left, #bdc3c7, #2c3e50)'
+    event.target.style.background = vacationBackgroundColor
     event.target.textContent = 'V'
-    event.target.style.color = 'white'
+    event.target.style.color = white
 }
 
 function paragrafFunction(event) {
     event.target.style.background = 'linear-gradient(to right, #bc4e9c, #f80759)'
     event.target.textContent = 'P'
-    event.target.style.color = 'white'
+    event.target.style.color = white
 }
 
 function freeshiftFunction(event) {
-    event.target.style.background = 'linear-gradient(to left, #bdc3c7, #2c3e50)'
+    event.target.style.background = freeShiftBackgroundColor
     event.target.textContent = '-'
-    event.target.style.color = 'white'
+    event.target.style.color = white
 }
 
 //Keyboard Control Panel

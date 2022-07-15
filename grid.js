@@ -38,18 +38,6 @@ function mainGrid () {
             dayLoop++
         }
     }
-    console.log(operatorsArray)
 }
 
 mainGrid()
-
-//SKONCIL SOM VO FUNKCII mainGrid a scripte maingrid.js
-//Po kliknuti na akukolvek bunku mi vykonzoluje konkretne ID coz je operator + kalendarny den
-//pre priklad ID "Operator 8 31" znamena ze je to operator c. 8 a klikol som na 31. den
-//zaroven som kazdemu operatorovi pushol do operatorDay[] cislo dna - MOZNO ZBYTOCNE NEVIEM CI TO MA VYUZITIE
-//Skusit nastavit jednotlivym cislam dni true alebo false hodnoty aby som vedel fungovat
-
-//Prist na sposob ako prisupovat ku konkretnym dnom konkretnych operatorov
-
-
-
