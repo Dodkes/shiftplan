@@ -3,23 +3,18 @@ const operatorsArray = []
 const sundayArray = []
 const saturdayArray = []
 let monthDays
-let weekend
-let getNextMonth = new Date().getMonth()+1
+let getNextMonth = new Date().getMonth()+2
 let gridColumns = ''
-
-//BUDE TREBA ZMENIT VSETKY PREMENNE KTORE OBSAHUJU NIECO S DATUMOM NA TO CO BUDE BUDUCI ROK V JANUARI
-// if (getNextMonth == 12) {
-//     const newDate = new Date(new Date().setFullYear(new Date().getFullYear() + 1))
-//     newDate.setMonth(0)
-//     getNextMonth = newDate.getMonth()+1
-//     console.log(getNextMonth)
-// }
 
 //GET FIRST DAY OF THE NEXT MONTH
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const firstDayOfTheMonth = new Date(new Date().getFullYear(), getNextMonth, 1)
 const firstDay = firstDayOfTheMonth.getDay()
 console.log('First day of NEXT month is ' + weekDays[firstDay])
+
+if (getNextMonth == 12) { //if its december, shiftplan generated for january next year
+    getNextMonth = 0
+}
 
 let dayLoop = firstDay
 
@@ -45,17 +40,6 @@ switch (currentMonth){
 //how many days has each month
 console.log(currentMonth + ' has ' + monthDays + ' days')
 
-//MAPPING WEEKENDS
-switch (new Date().getDay()){
-    default: weekend = 'Normal day'
-    break;
-    case 0: weekend = 'Sunday'
-    break;
-    case 6: weekend = 'Saturday'
-    break;
-}
-
-console.log('is the weekend? ' + weekend)
 
 //Main grid - day line
     function dayLineGrid (monthDays) {

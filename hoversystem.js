@@ -24,10 +24,11 @@ $('div').hover((event)=>{
 
 })
 
-
 //Find weekends and set them color
 stylingWeekends(sundayArray, sundayColor)
 stylingWeekends(saturdayArray, saturdayColor)
+//---AK KLIKNUTE ID PO ROZDELENI A PREVEDENI NA TYP CISLO SA NACHADZA NA SATURDAYARRAY TAK NASTAVI
+//---FARBU POLA NA SATURDAYCOLOR
 
 let currentHolidayMonth = []
 
@@ -70,4 +71,3 @@ function styleWeekend(x ,myarray, color) {
         y.style.backgroundColor = color
     }
 }
-//OPRAVIT HOVER SYSTEM -> zmenit z hover na hover in a hover out aby to nehadzalo errory

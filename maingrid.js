@@ -32,20 +32,27 @@ $(maingridContainer).children().click((event)=>{
     if (clickedIdSplit[0] === 'Operator') {
         if (event.target.id){
             if (dayshift){
-                dayshiftFunction(event)
+                shiftFunction(event, dayShiftBackgroundColor, 'D', 'black')
             } else if (nightshift) {
-                nightshiftFunction(event)
+                shiftFunction(event, nightShiftBackgroundColor, 'N', 'black')
             } else if (vacation) {
-                vacationFunction(event)
+                shiftFunction(event, vacationBackgroundColor, 'V', white)
             } else if (paragraf) {
-                paragrafFunction(event) 
+                shiftFunction(event, paragrafColor, 'P', white) 
             } else if (freeshift) {
-                freeshiftFunction(event)
+                shiftFunction(event, freeShiftBackgroundColor, '-', white)
             }
         } 
     }
 
 })
+
+//Invoked functions - tu budem davat podmienky a pristupovat k bunkam
+function shiftFunction(event, color, shift, textColor) {
+    event.target.style.background = color
+    event.target.textContent = shift
+    event.target.style.color = textColor
+}
 
 //Doubleclick to reset
 $(maingridContainer).children().dblclick((event)=>{
@@ -55,42 +62,34 @@ $(maingridContainer).children().dblclick((event)=>{
         event.target.textContent = '-'
         event.target.style.color = white
     }
+    //if founds weekend/holiday set to respective color
+    for (x of saturdayArray) {
+        if (clickedIdSplit[2] === x){
+            event.target.style.backgroundColor = saturdayColor
+            event.target.style.color = white
+            event.target.textContent = '-'
+        }
+    }
+
+    for (y of sundayArray) {
+        if (clickedIdSplit[2] === y) {
+            event.target.style.backgroundColor = sundayColor
+            event.target.style.color = white
+            event.target.textContent = '-'
+        }
+    }
+
+    for (z of currentHolidayMonth) {
+        if (clickedIdSplit[2] == z) {
+            event.target.style.backgroundColor = holidayColor
+            event.target.style.color = white
+            event.target.textContent = '-'
+        }
+    }
 })
-
-//Invoked functions - tu budem davat podmienky a pristupovat k bunkam
-function dayshiftFunction(event) {
-    event.target.style.background = dayShiftBackgroundColor
-    event.target.textContent = 'D'
-    event.target.style.color = 'black'
-}
-
-function nightshiftFunction(event) {
-    event.target.style.background = nightShiftBackgroundColor
-    event.target.textContent = 'N'
-    event.target.style.color = 'black'
-}
-
-function vacationFunction(event) {
-    event.target.style.background = vacationBackgroundColor
-    event.target.textContent = 'V'
-    event.target.style.color = white
-}
-
-function paragrafFunction(event) {
-    event.target.style.background = 'linear-gradient(to right, #bc4e9c, #f80759)'
-    event.target.textContent = 'P'
-    event.target.style.color = white
-}
-
-function freeshiftFunction(event) {
-    event.target.style.background = freeShiftBackgroundColor
-    event.target.textContent = '-'
-    event.target.style.color = white
-}
 
 //Keyboard Control Panel
 document.addEventListener('keydown',(event)=>{
-
     switch(event.key){
         case 'd': setup('dayshift')
         break;
