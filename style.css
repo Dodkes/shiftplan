@@ -8,9 +8,6 @@ h1{
     font-family: 'Lato', sans-serif;
 }
 
-.operators-grid-container{
-}
-
  body{
     background: linear-gradient(to right, #a8c0ff, #3f2b96); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, #0f0c29, #302b63, #24243e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
@@ -39,7 +36,7 @@ h1{
      text-shadow: 2px 2px 2px black;
  }
 
- .operators-grid-container{
+ .operators-grid-container, .summaryLeftPanel{
      display: grid;
      float: left;
  }
@@ -67,7 +64,7 @@ h1{
  }
 
  .operators-grid-container > div {
-     padding:0 5px 0 5px;
+     padding: 0 5px 0 5px;
  }
 
  .controlPanel {
@@ -102,4 +99,31 @@ h1{
 
  #paragraf {
      background: linear-gradient(to right, #bc4e9c, #f80759);
+ }
+ 
+ .summaryGridContainer{
+    margin-top: 10vh;
+    display: grid;
+    text-align: center;
+    box-shadow: 0px 1px 10px black;
+
+ }
+
+ .summaryLeftPanel{
+    margin-top: 10vh;
+    float: left;
+    box-shadow: 0px 1px 10px black;
+    text-shadow: 2px 2px 2px black;
+ }
+
+ .dayShiftSummary {
+    background-color: rgba(0, 85, 128, 0.5);
+ }
+
+ .nightShiftSummary {
+    background-color: rgba(102, 204, 255, 0.5);
+ }
+
+ .summaryLeftPanel > div {
+    padding: 0 5px 0 5px;
  }

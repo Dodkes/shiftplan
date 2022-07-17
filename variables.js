@@ -6,6 +6,7 @@ const augustHoliday = [29]
 const septemberHoliday = [1, 15]
 const novemberHoliday = [1, 17]
 const decemberHoliday = [24, 25, 26]
+let date = new Date
 //Used colors
 const white = 'white'
 const paragrafColor = 'linear-gradient(to right, #bc4e9c, #f80759)'
@@ -16,3 +17,4 @@ const freeShiftBackgroundColor = vacationBackgroundColor
 const saturdayColor = 'rgba(209, 206, 226, 0.2)'
 const sundayColor = 'rgba(209, 206, 226, 0.4)'
 const holidayColor = 'rgba(127, 255, 212, 0.5)'
+const currentDayColor = '#66ccff'

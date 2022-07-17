@@ -3,7 +3,7 @@ const operatorsArray = []
 const sundayArray = []
 const saturdayArray = []
 let monthDays
-let getNextMonth = new Date().getMonth()+2
+let getNextMonth = new Date().getMonth()+1
 let gridColumns = ''
 
 //GET FIRST DAY OF THE NEXT MONTH
@@ -39,7 +39,6 @@ switch (currentMonth){
 
 //how many days has each month
 console.log(currentMonth + ' has ' + monthDays + ' days')
-
 
 //Main grid - day line
     function dayLineGrid (monthDays) {

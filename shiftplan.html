@@ -16,7 +16,7 @@
     <script src="grid.js" defer></script>
     <script src="maingrid.js" defer></script>
     <script src="hoversystem.js" defer></script>
-
+    <script src="summaryGrid.js" defer></script>
 </head>
 <body>
     <div id="title">
@@ -29,7 +29,16 @@
     </div>
 
     <div class="mainGrid"></div>
+    
 
+        <div class="summaryLeftPanel">
+            <div class="dayShiftSummary">D - Operators</div>
+            <div class="dayShiftSummary">D - SL </div>
+            <div class="nightShiftSummary">N - Operators</div>
+            <div class="nightShiftSummary">N - SL </div>
+        </div>
+        <div class="summaryGridContainer"></div>
+    
     <footer class="controlPanel">
         <button id="dayshift" onclick="setup(this.id)">Dayshift - D</button>
         <button id="nightshift" onclick="setup(this.id)">Nightshift - N</button>

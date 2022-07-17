@@ -27,8 +27,6 @@ $('div').hover((event)=>{
 //Find weekends and set them color
 stylingWeekends(sundayArray, sundayColor)
 stylingWeekends(saturdayArray, saturdayColor)
-//---AK KLIKNUTE ID PO ROZDELENI A PREVEDENI NA TYP CISLO SA NACHADZA NA SATURDAYARRAY TAK NASTAVI
-//---FARBU POLA NA SATURDAYCOLOR
 
 let currentHolidayMonth = []
 
@@ -57,7 +55,6 @@ if (getNextMonth === 0 ||
     getNextMonth === 11){
         stylingWeekends(currentHolidayMonth, holidayColor)
 }
-
 
 function stylingWeekends(myarray, color) {
     for (let x = 0; x < myarray.length; x++) {

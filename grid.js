@@ -15,7 +15,6 @@ function shiftleaderColor(shiftleader, column){
     }
 }
 
-
 //Main Grid creation loop
 function mainGrid () {
     let dayLoop = 1
