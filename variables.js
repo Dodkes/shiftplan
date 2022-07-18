@@ -1,4 +1,4 @@
-//Holidays months arrays
+//Dates
 const januaryHoliday = [1, 6]
 const mayHoliday = [1, 8]
 const julyHoliday = [5]
@@ -18,3 +18,4 @@ const saturdayColor = 'rgba(209, 206, 226, 0.2)'
 const sundayColor = 'rgba(209, 206, 226, 0.4)'
 const holidayColor = 'rgba(127, 255, 212, 0.5)'
 const currentDayColor = '#66ccff'
+const shiftLeaderColor = '#666699'

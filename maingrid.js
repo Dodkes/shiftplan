@@ -33,8 +33,10 @@ $(maingridContainer).children().click((event)=>{
         if (event.target.id){
             if (dayshift){
                 shiftFunction(event, dayShiftBackgroundColor, 'D', 'black')
+                summaryFunction(event.target.id, 'D')//function is defined in summaryGrid.js
             } else if (nightshift) {
                 shiftFunction(event, nightShiftBackgroundColor, 'N', 'black')
+                summaryFunction(event.target.id, 'N')//function is defined in summaryGrid.js
             } else if (vacation) {
                 shiftFunction(event, vacationBackgroundColor, 'V', white)
             } else if (paragraf) {
@@ -44,10 +46,8 @@ $(maingridContainer).children().click((event)=>{
             }
         } 
     }
-
 })
 
-//Invoked functions - tu budem davat podmienky a pristupovat k bunkam
 function shiftFunction(event, color, shift, textColor) {
     event.target.style.background = color
     event.target.textContent = shift

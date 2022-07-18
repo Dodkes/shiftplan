@@ -3,7 +3,7 @@ const gridContainer = document.querySelector('.operators-grid-container')
 for (i = 0; i < operatorsArray.length; i++){
     let column = document.createElement('div')
     gridContainer.appendChild(column)
-    column.textContent = operatorsArray[i].name
+    column.textContent = operatorsArray[i].realName
     shiftleaderColor(operatorsArray[i].shiftleader, column)
     $(column).attr('id', 'line ' + (i + 1))
 }
@@ -11,7 +11,7 @@ for (i = 0; i < operatorsArray.length; i++){
 //Shift leader styling function
 function shiftleaderColor(shiftleader, column){
     if (shiftleader == true){
-        column.style.backgroundColor = '#666699'
+        column.style.backgroundColor = shiftLeaderColor
     }
 }
 

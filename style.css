@@ -127,3 +127,10 @@ h1{
  .summaryLeftPanel > div {
     padding: 0 5px 0 5px;
  }
+
+.summaryCellStyle{
+    color: yellowgreen;
+    padding: 0;
+    margin: 0;
+    font-size: 0.7vw;
+}

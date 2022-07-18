@@ -58,3 +58,16 @@ if (getNextMonth === 0 ||
     getNextMonth === 11){
         styleSummaryTable(currentHolidayMonth, holidayColor)
 }
+
+//Summary info setup - function is called from maingrid.js on click event
+function summaryFunction(e, shift) {
+    let splitId = e.split(' ')
+    splitId[1]
+    let selectedOperator = splitId[1] - 1
+    console.log(operatorsArray[selectedOperator].realName)
+    if (operatorsArray[selectedOperator].shiftleader === true && shift === 'D') {
+        let summarySLCell = document.getElementById('shiftleaderD ' + splitId[2])
+        summarySLCell.textContent = operatorsArray[selectedOperator].realName
+        $(summarySLCell).addClass('summaryCellStyle')
+    }
+}
