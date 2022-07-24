@@ -17,9 +17,8 @@ const sumGrid = (operators) => {
         let newElement = document.createElement('div')
         summaryGrid.appendChild(newElement)
         newElement.textContent = '-'
-        newElement.style.padding = '0'
-
         $(newElement).attr('id', operators + ' ' + (i+1))
+        $(newElement).addClass('sumGrid')
     }
 }
 
@@ -68,6 +67,56 @@ function summaryFunction(e, shift) {
     if (operatorsArray[selectedOperator].shiftleader === true && shift === 'D') {
         let summarySLCell = document.getElementById('shiftleaderD ' + splitId[2])
         summarySLCell.textContent = operatorsArray[selectedOperator].realName
-        $(summarySLCell).addClass('summaryCellStyle')
+        $(summarySLCell).addClass('summaryCellStyleDayshift')
+    }
+    if (operatorsArray[selectedOperator].shiftleader && shift === 'N') {
+        let summaryCell = document.getElementById('shiftleaderN ' + splitId[2])
+        summaryCell.textContent = operatorsArray[selectedOperator].realName
+        $(summaryCell).addClass('summaryCellStyleNightshift')
+    }
+    summaryOperators(splitId)
+}
+//on dblclick vyresetovat bunku v summary grid - funkciu mozem definovat tu a vyvolat ju v dbl click evente
+
+function summaryOperators(id) {
+    let dayshiftCount = 0
+    let nightshiftCount = 0
+    for (i = 1; i <= operatorsArray.length; i++) {
+        let columnLoop = document.getElementById('Operator ' + i + ' ' + id[2])
+        if (columnLoop.textContent === 'D') {
+            dayshiftCount++
+        } else if (columnLoop.textContent === 'N') {
+            nightshiftCount++
+        }
+    }
+    let getComputeElementD = document.getElementById('operatorsD ' + id[2])
+    let getComputeElementN = document.getElementById('operatorsN ' + id[2])
+    
+    getComputeElementD.textContent = dayshiftCount
+    getComputeElementN.textContent = nightshiftCount
+
+    getComputeElementN.style.fontSize = '20px'
+    getComputeElementD.style.fontSize = '20px'
+
+
+    if (dayshiftCount === 0) {
+        getComputeElementD.textContent = '-'
+        getComputeElementD.style.color = 'white'
+        getComputeElementD.style.fontSize = '13px'
+    } else if (dayshiftCount > 0 && dayshiftCount < 4) {
+        getComputeElementD.style.color = 'red'
+    } else if (dayshiftCount >= 4) {
+        getComputeElementD.style.color = 'lightgreen'
+    }
+
+    if (nightshiftCount === 0) {
+        getComputeElementN.textContent = '-'
+        getComputeElementN.style.color = 'white'
+        getComputeElementN.style.fontSize = '13px'
+    } else if (nightshiftCount > 0 && nightshiftCount < 4) {
+        getComputeElementN.style.color = 'red'
+    } else if (nightshiftCount >= 4) {
+        getComputeElementN.style.color = 'lightgreen'
+        
     }
 }

@@ -86,6 +86,7 @@ $(maingridContainer).children().dblclick((event)=>{
             event.target.textContent = '-'
         }
     }
+    summaryOperators(clickedIdSplit)
 })
 
 //Keyboard Control Panel

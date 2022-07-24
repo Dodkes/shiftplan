@@ -113,24 +113,48 @@ h1{
     margin-top: 10vh;
     float: left;
     box-shadow: 0px 1px 10px black;
-    text-shadow: 2px 2px 2px black;
  }
 
+.summaryLeftPanel > div {
+    height: 30px;
+    font-size: 0.9em;
+}
+
  .dayShiftSummary {
-    background-color: rgba(0, 85, 128, 0.5);
+    background-color: #7FFFD4;
+    color: black;
+    text-shadow: none;
+    color: black;
  }
 
  .nightShiftSummary {
-    background-color: rgba(102, 204, 255, 0.5);
+    background-color: #008055;
+    color: white;
+    text-shadow: 1px 1px 5px black;
  }
 
  .summaryLeftPanel > div {
     padding: 0 5px 0 5px;
+    font-weight: bold;
  }
 
-.summaryCellStyle{
-    color: yellowgreen;
-    padding: 0;
-    margin: 0;
-    font-size: 0.7vw;
+.summaryLeftPanel, .summaryGridContainer {
+    text-shadow: none;
+}
+
+.summaryCellStyleNightshift {
+    color: #00e6e6;
+}
+
+.summaryCellStyleDayshift {
+    color: #7FFFD4;
+}
+
+.sumGrid {
+    height: 30px;
+    font-size: 13px;
+    max-height: 38px;
+    max-width: 60px;
+    width: 58.4px;
+    text-shadow: 1px 2px 5px black;
 }
