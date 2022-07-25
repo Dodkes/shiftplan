@@ -5,7 +5,6 @@ let topPanelMonthSelectedId
 $('div').hover((event)=>{
     let selectedId = event.target.id
     let newId = selectedId.split(' ')
-    firstHovered = true
     if (newId[0] === 'Operator') {
         leftPanelSelectedId = document.getElementById('line ' + newId[1])
         topPanelDaySelectedId = document.getElementById('topLineDay ' + newId[2])

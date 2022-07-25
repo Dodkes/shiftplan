@@ -61,6 +61,8 @@ $(maingridContainer).children().dblclick((event)=>{
         event.target.style.background = 'none'
         event.target.textContent = '-'
         event.target.style.color = white
+        summaryOperators(clickedIdSplit)
+        skuska(clickedIdSplit)
     }
     //if founds weekend/holiday set to respective color
     for (x of saturdayArray) {
@@ -86,7 +88,6 @@ $(maingridContainer).children().dblclick((event)=>{
             event.target.textContent = '-'
         }
     }
-    summaryOperators(clickedIdSplit)
 })
 
 //Keyboard Control Panel

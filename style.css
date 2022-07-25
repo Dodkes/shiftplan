@@ -11,10 +11,9 @@ h1{
  body{
     background: linear-gradient(to right, #a8c0ff, #3f2b96); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     background: linear-gradient(to right, #0f0c29, #302b63, #24243e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-     color: white;
-     text-shadow: 1px 1px 1px black;
-     font-family: 'Fira Sans', sans-serif;
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    font-family: 'Fira Sans', sans-serif;
  }
 
  #title{
@@ -28,17 +27,17 @@ h1{
  }
 
  ::selection{
-     background-color: transparent;
+    background-color: transparent;
  }
 
  #currentMonth{
-     color: aqua;
-     text-shadow: 2px 2px 2px black;
+    color: aqua;
+    text-shadow: 2px 2px 2px black;
  }
 
  .operators-grid-container, .summaryLeftPanel{
-     display: grid;
-     float: left;
+    display: grid;
+    float: left;
  }
 
 .tableCorner{
@@ -47,24 +46,24 @@ h1{
 }
 
  div{
-     border: 1px solid #667db6;
+    border: 1px solid #667db6;
  }
 
  .mainGrid{
-     display: grid;
-     text-align: center;
-     box-shadow: 1px 1px 50px black;
+    display: grid;
+    text-align: center;
+    box-shadow: 1px 1px 50px black;
  }
 
  div > div:hover{
-     cursor: pointer;
-     background: linear-gradient(to right, #d3cce3, #e9e4f0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-     background-color: white;
-     opacity: 0.5;
+    cursor: pointer;
+    background: linear-gradient(to right, #d3cce3, #e9e4f0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: white;
+    opacity: 0.5;
  }
 
  .operators-grid-container > div {
-     padding: 0 5px 0 5px;
+    padding: 0 5px 0 5px;
  }
 
  .controlPanel {
@@ -78,13 +77,13 @@ h1{
  }
 
  .controlPanel > button {
-     padding: 10px;
-     border: 2px solid black;
-     border-radius: 5px;
-     cursor: pointer;
-     box-shadow: 1px 4px 5px black;
-     font-weight: bold;
-     outline: none;
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 1px 4px 5px black;
+    font-weight: bold;
+    outline: none;
  }
 
  #dayshift, #nightshift {
@@ -98,7 +97,7 @@ h1{
  }
 
  #paragraf {
-     background: linear-gradient(to right, #bc4e9c, #f80759);
+    background: linear-gradient(to right, #bc4e9c, #f80759);
  }
  
  .summaryGridContainer{
@@ -121,14 +120,14 @@ h1{
 }
 
  .dayShiftSummary {
-    background-color: #7FFFD4;
+    background-color: #9494b8;
     color: black;
     text-shadow: none;
     color: black;
  }
 
  .nightShiftSummary {
-    background-color: #008055;
+    background-color: #3d3d5c;
     color: white;
     text-shadow: 1px 1px 5px black;
  }
@@ -142,19 +141,15 @@ h1{
     text-shadow: none;
 }
 
-.summaryCellStyleNightshift {
-    color: #00e6e6;
-}
-
-.summaryCellStyleDayshift {
-    color: #7FFFD4;
+.summaryCellStyleNightshift, .summaryCellStyleDayshift {
+    color: wheat;
+    text-shadow: 1px 2px 5px black;
 }
 
 .sumGrid {
     height: 30px;
     font-size: 13px;
     max-height: 38px;
-    max-width: 60px;
+    max-width: 70px;
     width: 58.4px;
-    text-shadow: 1px 2px 5px black;
 }

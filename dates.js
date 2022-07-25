@@ -77,5 +77,3 @@ console.log(currentMonth + ' has ' + monthDays + ' days')
             }
         }
     }
-
-    

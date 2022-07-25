@@ -149,6 +149,3 @@ operatorsArray.push(operator1, operator2, operator3, operator4, operator5, opera
     operator7, operator8, operator9, operator10, operator11, operator12, operator13,
     operator14, operator15, operator16, operator17, operator18, operator19, operator20,
     operator21)
-
-//Id v main gride priraduje podla operator.name cize musim kazdemu popridavat property realName
-//a tam zadat ich meno
