@@ -59,6 +59,7 @@ if (getNextMonth === 0 ||
 }
 
 //Summary info setup - function is called from maingrid.js on click event
+//this function textcontent shiftleader realname
 function summaryFunction(e, shift) {
     let splitId = e.split(' ')
     splitId[1]
@@ -82,16 +83,14 @@ function summaryFunction(e, shift) {
             dayCell.textContent = '-'
         }
     }
-    summaryOperators(splitId)
+    summaryOperatorsCount(splitId)
 }
 //on dblclick vyresetovat bunku v summary grid - funkciu mozem definovat tu a vyvolat ju v dbl click evente
 
 
-//FUNKCIU skuska VYVOLAT LEN POKIAL KLIKNEM NA SHIFTLEADERA
 function skuska(id) {
     let index = id[1] - 1
     let index2 = id[2]
-    //console.log(operatorsArray[index].realName)
     let slID = document.getElementById('shiftleaderD ' + index2)
     let slIDN = document.getElementById('shiftleaderN ' + index2)
     if (operatorsArray[index].realName === slID.textContent) {
@@ -117,8 +116,8 @@ function skuska(id) {
         }
     }
 }
-
-function summaryOperators(id) {
+//Operators on the shift counter-----------------------------------
+function summaryOperatorsCount(id) {
     let dayshiftCount = 0
     let nightshiftCount = 0
     for (i = 1; i <= operatorsArray.length; i++) {
@@ -135,6 +134,7 @@ function summaryOperators(id) {
     getComputeElementD.textContent = dayshiftCount
     getComputeElementN.textContent = nightshiftCount
 
+//Styling only----------------------------------------------------
     getComputeElementN.style.fontSize = '20px'
     getComputeElementD.style.fontSize = '20px'
     getComputeElementD.style.textShadow = '1px 2px 5px black'
@@ -161,11 +161,13 @@ function summaryOperators(id) {
     }
 
 }
+//Poriadne preskusat sumamryGrid ci vsetko funguje ako ma ! ! !
+
 //Pred dovolenkou:
 //Skoncil som vo funkcii skuska(id), kt. je vyvolana z maingrid.js v dblclick evente
 //Problem ako ho fixnut:
 //Problem je ze na dbl click event mi zabera aj single click a teda, pokial chcem vymazat
-//niekoho kto je jednym zo shiftleaderov a je na zmene ale nema byt na tej zmene shiftleader
+//niekoho kto je jednym zo shiftleaderov a je na zmene ale nema byt na danej zmene shiftleader
 //tak mi toho povodneho SL napriek tomu zresetuje
 
 //Fixnut sa to da tak, ze dblclick event nahradim akymkolvek inym, napriklad space-bar eventom

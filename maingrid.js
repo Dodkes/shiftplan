@@ -25,24 +25,34 @@ function setup(id) {
 }
 
 //Click to invoke proper function shift
-
 $(maingridContainer).children().click((event)=>{
     console.log('Clicked ID is ' + event.target.id)
     let clickedIdSplit = event.target.id.split(' ')
     if (clickedIdSplit[0] === 'Operator') {
         if (event.target.id){
             if (dayshift){
+                editorMode = true
                 shiftFunction(event, dayShiftBackgroundColor, 'D', 'black')
                 summaryFunction(event.target.id, 'D')//function is defined in summaryGrid.js
             } else if (nightshift) {
+                editorMode = true
                 shiftFunction(event, nightShiftBackgroundColor, 'N', 'black')
                 summaryFunction(event.target.id, 'N')//function is defined in summaryGrid.js
             } else if (vacation) {
+                editorMode = false
                 shiftFunction(event, vacationBackgroundColor, 'V', white)
+                skuska(clickedIdSplit)
+                summaryOperatorsCount(clickedIdSplit)
             } else if (paragraf) {
-                shiftFunction(event, paragrafColor, 'P', white) 
+                editorMode = false
+                shiftFunction(event, paragrafColor, 'P', white)
+                skuska(clickedIdSplit)
+                summaryOperatorsCount(clickedIdSplit)
             } else if (freeshift) {
+                editorMode = false
                 shiftFunction(event, freeShiftBackgroundColor, '-', white)
+                skuska(clickedIdSplit)
+                summaryOperatorsCount(clickedIdSplit)
             }
         } 
     }
@@ -61,8 +71,10 @@ $(maingridContainer).children().dblclick((event)=>{
         event.target.style.background = 'none'
         event.target.textContent = '-'
         event.target.style.color = white
-        summaryOperators(clickedIdSplit)
-        skuska(clickedIdSplit)
+        summaryOperatorsCount(clickedIdSplit)
+        if (editorMode === true) {
+            skuska(clickedIdSplit)
+        }
     }
     //if founds weekend/holiday set to respective color
     for (x of saturdayArray) {

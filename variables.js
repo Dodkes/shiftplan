@@ -6,6 +6,7 @@ const augustHoliday = [29]
 const septemberHoliday = [1, 15]
 const novemberHoliday = [1, 17]
 const decemberHoliday = [24, 25, 26]
+let editorMode = false
 let date = new Date
 //Used colors
 const white = 'white'
