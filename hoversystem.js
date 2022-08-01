@@ -56,7 +56,7 @@ if (getNextMonth === 0 ||
 }
 
 function stylingWeekends(myarray, color) {
-    for (let x = 0; x < myarray.length; x++) {
+    for (x in myarray) {
         styleWeekend(x, myarray, color)
     }
 }
