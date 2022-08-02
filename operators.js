@@ -1,3 +1,5 @@
+const operatorsArray = []
+
 const operator1 = {
     name: 'Operator 1',
     realName: 'A. Miroslav',
@@ -71,7 +73,7 @@ const operator10 = {
 const operator11 = {
     name: 'Operator 11',
     realName: 'H. Milos',
-    shiftleader: false,
+    shiftleader: true,
     operatorDay: []
 }
 

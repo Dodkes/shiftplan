@@ -22,7 +22,6 @@ $('div').hover((event)=>{
         }
 
 })
-
 //Find weekends and set them color
 stylingWeekends(sundayArray, sundayColor)
 stylingWeekends(saturdayArray, saturdayColor)
@@ -30,19 +29,19 @@ stylingWeekends(saturdayArray, saturdayColor)
 let currentHolidayMonth = []
 
 switch (getNextMonth){
-    case 0: currentHolidayMonth = januaryHoliday
+    case 0: currentHolidayMonth = holidays.january
         break;
-    case 4: currentHolidayMonth = mayHoliday
+    case 4: currentHolidayMonth = holidays.may
         break;
-    case 6: currentHolidayMonth = julyHoliday
+    case 6: currentHolidayMonth = holidays.july
         break;
-    case 7: currentHolidayMonth = augustHoliday
+    case 7: currentHolidayMonth = holidays.august
         break;
-    case 8: currentHolidayMonth = septemberHoliday
+    case 8: currentHolidayMonth = holidays.september
         break;
-    case 10: currentHolidayMonth = novemberHoliday
+    case 10: currentHolidayMonth = holidays.november
          break;
-    case 11: currentHolidayMonth = decemberHoliday
+    case 11: currentHolidayMonth = holidays.december
         break;
 }
 if (getNextMonth === 0 ||

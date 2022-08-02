@@ -1,11 +1,13 @@
 //Dates
-const januaryHoliday = [1, 6]
-const mayHoliday = [1, 8]
-const julyHoliday = [5]
-const augustHoliday = [29]
-const septemberHoliday = [1, 15]
-const novemberHoliday = [1, 17]
-const decemberHoliday = [24, 25, 26]
+const holidays = {
+    january: [1, 6],
+    may: [1, 8],
+    july: [5],
+    august: [29],
+    september: [1, 15],
+    november: [1, 17],
+    december: [24, 25, 26]
+}
 let editorMode = false
 let date = new Date
 //Used colors

@@ -101,11 +101,10 @@ h1{
  }
  
  .summaryGridContainer{
-    margin-top: 10vh;
-    display: grid;
-    text-align: center;
-    box-shadow: 0px 1px 10px black;
-
+   margin-top: 10vh;
+   display: grid;
+   text-align: center;
+   box-shadow: 0px 1px 10px black;
  }
 
  .summaryLeftPanel{

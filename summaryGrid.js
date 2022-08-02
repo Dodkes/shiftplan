@@ -116,7 +116,7 @@ function skuska(id) {
         }
     }
 }
-//Operators on the shift counter-----------------------------------
+//Looping through columns if there is D or N as text content-----------------------------------
 function summaryOperatorsCount(id) {
     let dayshiftCount = 0
     let nightshiftCount = 0
@@ -131,35 +131,30 @@ function summaryOperatorsCount(id) {
     let getComputeElementD = document.getElementById('operatorsD ' + id[2])
     let getComputeElementN = document.getElementById('operatorsN ' + id[2])
     
-    getComputeElementD.textContent = dayshiftCount
-    getComputeElementN.textContent = nightshiftCount
-
-//Styling only----------------------------------------------------
-    getComputeElementN.style.fontSize = '20px'
-    getComputeElementD.style.fontSize = '20px'
-    getComputeElementD.style.textShadow = '1px 2px 5px black'
-    getComputeElementN.style.textShadow = '1px 2px 5px black'
-
+//Updating cells in summary table----------------------------------------------------
     if (dayshiftCount === 0) {
-        getComputeElementD.textContent = '-'
-        getComputeElementD.style.color = 'white'
-        getComputeElementD.style.fontSize = '13px'
+        summaryCellUpdate(getComputeElementD, '13px', 'none', white, '-')
     } else if (dayshiftCount > 0 && dayshiftCount < 4) {
-        getComputeElementD.style.color = 'red'
+        summaryCellUpdate(getComputeElementD, '20px', '1px 2px 5px black', 'red', dayshiftCount)
     } else if (dayshiftCount >= 4) {
-        getComputeElementD.style.color = 'lightgreen'
+        summaryCellUpdate(getComputeElementD, '20px', '1px 2px 5px black', 'lightgreen', dayshiftCount)
     }
 
     if (nightshiftCount === 0) {
-        getComputeElementN.textContent = '-'
-        getComputeElementN.style.color = 'white'
-        getComputeElementN.style.fontSize = '13px'
+        summaryCellUpdate(getComputeElementN, '13px', 'none', white, '-')
     } else if (nightshiftCount > 0 && nightshiftCount < 4) {
-        getComputeElementN.style.color = 'red'
+        summaryCellUpdate(getComputeElementN, '20px', 'none', 'red', nightshiftCount)
     } else if (nightshiftCount >= 4) {
-        getComputeElementN.style.color = 'lightgreen'
+        summaryCellUpdate(getComputeElementN, '20px', 'none', 'lightgreen', nightshiftCount)
     }
+    
+}
 
+const summaryCellUpdate = (element, size, shadow, color, textcontent) => {
+    element.style.fontSize = size
+    element.style.textShadow = shadow
+    element.style.color = color
+    element.textContent = textcontent
 }
 //Poriadne preskusat sumamryGrid ci vsetko funguje ako ma ! ! !
 

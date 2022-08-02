@@ -1,5 +1,4 @@
 const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-const operatorsArray = []
 const sundayArray = []
 const saturdayArray = []
 let monthDays
@@ -19,9 +18,8 @@ if (getNextMonth == 12) { //if its december, shiftplan generated for january nex
 let dayLoop = firstDay
 
 const mainGridContainer = document.querySelector('.mainGrid')
-const displayMonth = document.querySelector('#currentMonth')
 currentMonth = month[getNextMonth]
-displayMonth.innerHTML = currentMonth
+document.querySelector('#currentMonth').textContent = currentMonth
 
 switch (currentMonth){
     case 'February': monthDays = 28, dayLineGrid(monthDays)
@@ -37,9 +35,6 @@ switch (currentMonth){
     default: monthDays = 31, dayLineGrid(monthDays)
 }
 
-//how many days has each month
-console.log(currentMonth + ' has ' + monthDays + ' days')
-
 //Main grid - day line
     function dayLineGrid (monthDays) {
         for (i = 0; i < monthDays; i++) {
@@ -49,10 +44,7 @@ console.log(currentMonth + ' has ' + monthDays + ' days')
         $('.mainGrid').css('grid-template-columns', gridColumns)
 
         for (i = 1; i < monthDays + 1; i++) {
-            let monthDay = document.createElement('div')
-            mainGridContainer.appendChild(monthDay)
-            monthDay.textContent = i
-            $(monthDay).attr('id', 'topLineDay ' + i)
+            elementCreation('div', mainGridContainer, 'id', 'topLineDay ' + i, i)
         }
 
         for (i = 0; i < monthDays; i++) {
@@ -60,12 +52,8 @@ console.log(currentMonth + ' has ' + monthDays + ' days')
             $(weekDay).attr('id', 'topLineMonth ' + (i + 1))
             mainGridContainer.appendChild(weekDay)
             weekDay.textContent = weekDays[dayLoop].slice(0,3) //get first 3 letters of the day
-            if (dayLoop == 6) {
-                dayLoop = 0
-            } else {
-                dayLoop++
-            }
 
+            dayLoop === 6 ? dayLoop = 0 : dayLoop++
             if (dayLoop === 1) {
                 let sundayDayNumber = weekDay.id.split(' ')
                 sundayArray.push(sundayDayNumber[1])
@@ -76,4 +64,11 @@ console.log(currentMonth + ' has ' + monthDays + ' days')
                 saturdayArray.push(saturdayDayNumber[1])
             }
         }
+    }
+
+function elementCreation (newEl, appendTo, attributeType, attributeName, text) {
+        let thisElement = document.createElement(newEl)
+        appendTo.appendChild(thisElement)
+        thisElement.textContent = text
+        $(thisElement).attr(attributeType, attributeName)
     }
