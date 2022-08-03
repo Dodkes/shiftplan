@@ -11,9 +11,7 @@ const firstDayOfTheMonth = new Date(new Date().getFullYear(), getNextMonth, 1)
 const firstDay = firstDayOfTheMonth.getDay()
 console.log('First day of NEXT month is ' + weekDays[firstDay])
 
-if (getNextMonth == 12) { //if its december, shiftplan generated for january next year
-    getNextMonth = 0
-}
+if (getNextMonth == 12) { getNextMonth = 0 } //if its december, shiftplan generated for january next year
 
 let dayLoop = firstDay
 
@@ -35,40 +33,29 @@ switch (currentMonth){
     default: monthDays = 31, dayLineGrid(monthDays)
 }
 
-//Main grid - day line
+//Main grid Top line only - day lines only
     function dayLineGrid (monthDays) {
         for (i = 0; i < monthDays; i++) {
             gridColumns += 'auto '
         }
-        //jquery set columns according to loop above
+
         $('.mainGrid').css('grid-template-columns', gridColumns)
 
         for (i = 1; i < monthDays + 1; i++) {
-            elementCreation('div', mainGridContainer, 'id', 'topLineDay ' + i, i)
+            new NewElement('div', 'id', 'topLineDay ' + i, i, mainGridContainer).createNewElement()
         }
 
         for (i = 0; i < monthDays; i++) {
-            let weekDay = document.createElement('div')
-            $(weekDay).attr('id', 'topLineMonth ' + (i + 1))
-            mainGridContainer.appendChild(weekDay)
-            weekDay.textContent = weekDays[dayLoop].slice(0,3) //get first 3 letters of the day
-
+            let weekDayElement = new NewElement('div', 'id', 'topLineMonth ' + (i + 1), weekDays[dayLoop].slice(0,3), mainGridContainer)
+            weekDayElement.createNewElement()
+            let splitNewElementId = splitId(weekDayElement.elType)
             dayLoop === 6 ? dayLoop = 0 : dayLoop++
             if (dayLoop === 1) {
-                let sundayDayNumber = weekDay.id.split(' ')
-                sundayArray.push(sundayDayNumber[1])
+                sundayArray.push(splitNewElementId[1])
             }
 
             if (dayLoop === 0) {
-                let saturdayDayNumber = weekDay.id.split(' ')
-                saturdayArray.push(saturdayDayNumber[1])
+                saturdayArray.push(splitNewElementId[1])
             }
         }
-    }
-
-function elementCreation (newEl, appendTo, attributeType, attributeName, text) {
-        let thisElement = document.createElement(newEl)
-        appendTo.appendChild(thisElement)
-        thisElement.textContent = text
-        $(thisElement).attr(attributeType, attributeName)
     }

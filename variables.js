@@ -22,3 +22,23 @@ const sundayColor = 'rgba(209, 206, 226, 0.4)'
 const holidayColor = 'rgba(127, 255, 212, 0.5)'
 const currentDayColor = '#66ccff'
 const shiftLeaderColor = '#666699'
+
+class NewElement {
+    constructor(elType, attributeType, attributeName, content, appendTo) {
+        this.elType = elType
+        this.attributeType = attributeType
+        this.attributeName = attributeName
+        this.content = content
+        this.appendTo = appendTo
+    }
+    createNewElement() {
+        this.elType = document.createElement(this.elType)
+        this.attributeType = $(this.elType).attr(this.attributeType, this.attributeName)
+        this.content = this.elType.textContent = this.content
+        this.appendTo = this.appendTo.appendChild(this.elType)
+    }
+}
+
+const splitId = (element) => {
+    return element.id.split(' ')
+}

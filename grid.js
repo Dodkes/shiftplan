@@ -1,18 +1,17 @@
 const gridContainer = document.querySelector('.operators-grid-container')
-//Left panel operators creation
-for (i = 0; i < operatorsArray.length; i++){
-    let column = document.createElement('div')
-    gridContainer.appendChild(column)
-    column.textContent = operatorsArray[i].realName
-    shiftleaderColor(operatorsArray[i].shiftleader, column)
-    $(column).attr('id', 'line ' + (i + 1))
-}
 
-//Shift leader styling function
-function shiftleaderColor(shiftleader, column){
+//Shift leader styling
+const shiftleaderColor = (shiftleader, column) => {
     if (shiftleader == true){
         column.style.backgroundColor = shiftLeaderColor
     }
+}
+
+//Left panel operators creation
+for (i = 0; i < operatorsArray.length; i++){
+    let columnOperator = new NewElement('div', 'id', 'line ' + (i + 1), operatorsArray[i].realName, gridContainer)
+    columnOperator.createNewElement()
+    shiftleaderColor(operatorsArray[i].shiftleader, columnOperator.elType)
 }
 
 //Main Grid creation loop
