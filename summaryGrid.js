@@ -156,18 +156,7 @@ const summaryCellUpdate = (element, size, shadow, color, textcontent) => {
     element.style.color = color
     element.textContent = textcontent
 }
-//Poriadne preskusat sumamryGrid ci vsetko funguje ako ma ! ! !
-
-//Pred dovolenkou:
-//Skoncil som vo funkcii skuska(id), kt. je vyvolana z maingrid.js v dblclick evente
-//Problem ako ho fixnut:
-//Problem je ze na dbl click event mi zabera aj single click a teda, pokial chcem vymazat
-//niekoho kto je jednym zo shiftleaderov a je na zmene ale nema byt na danej zmene shiftleader
-//tak mi toho povodneho SL napriek tomu zresetuje
-
-//Fixnut sa to da tak, ze dblclick event nahradim akymkolvek inym, napriklad space-bar eventom
-//teda trebalo by pridat dalsi button a prerobit z dblclick an space-bar alebo iny key button
-
-//dalo by sa to fixnut este aj tak, ze na single click event by som nastavil timer, resp aby
-//sa klasicka single click funkcia vykonala s delayom, a v double click evente zastavit single click
-//funkciu, napr aplikovanim boolean premennou + podmienkou
+//SummaryGrid Issues:
+//Po zmene napr. D SL na N mi neaktualizuje ak je niekto iny SL ale da ze je zmena bez SL pricom realne tam je iny SL
+//nemam nastavene ze to loopuje aj po zmene shifty, resp. je to nastavene len na dbl click event
+//event nastavit z DBL clicka na nieco ine pretoze sa prekryvaju

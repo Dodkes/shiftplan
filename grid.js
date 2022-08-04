@@ -15,24 +15,19 @@ for (i = 0; i < operatorsArray.length; i++){
 }
 
 //Main Grid creation loop
-function mainGrid () {
+const mainGrid = () => {
     let dayLoop = 1
     let operatorLoop = 0
     for (i = 0; i < monthDays * operatorsArray.length; i++){
-        let gridUnit = document.createElement('div')
-        mainGridContainer.appendChild(gridUnit)
-        gridUnit.textContent = '-'
-        gridUnit.style.color = 'white'
-        
         if (dayLoop <= monthDays) {
-            $(gridUnit).attr('id', operatorsArray[operatorLoop].name + ' ' + dayLoop)
-            operatorsArray[operatorLoop].operatorDay.push(dayLoop)
+            let gridUnit = new NewElement('div', 'id', operatorsArray[operatorLoop].name + ' ' + dayLoop, '-', mainGridContainer)
+            gridUnit.createNewElement()
             dayLoop++
         } else {
             dayLoop = 1
             operatorLoop++
-            $(gridUnit).attr('id', operatorsArray[operatorLoop].name + ' ' + dayLoop)
-            operatorsArray[operatorLoop].operatorDay.push(dayLoop)
+            let gridUnit = new NewElement('div', 'id', operatorsArray[operatorLoop].name + ' ' + dayLoop, '-', mainGridContainer)
+            gridUnit.createNewElement()
             dayLoop++
         }
     }
