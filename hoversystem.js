@@ -50,7 +50,8 @@ if (getNextMonth === 0 ||
     getNextMonth === 7 ||
     getNextMonth === 8 ||
     getNextMonth === 10 ||
-    getNextMonth === 11){
+    getNextMonth === 11)
+{ //styling holidays using stylingWeekends function
         stylingWeekends(currentHolidayMonth, holidayColor)
 }
 

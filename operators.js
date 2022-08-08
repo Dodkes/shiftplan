@@ -1,107 +1,107 @@
 const operatorsArray = 
     [operator1 = {
         name: 'Operator 1',
-        realName: 'A. Miroslav',
+        realName: 'A. Jan',
         shiftleader: false,
     },
     operator2 = {
         name: 'Operator 2',
-        realName: 'B. David',
+        realName: 'B. Michal',
         shiftleader: true,
     },   
     operator3 = {
         name: 'Operator 3',
-        realName: 'B. Pavol',
+        realName: 'B. Jozef',
         shiftleader: true,
     },
     operator4 = {
         name: 'Operator 4',
-        realName: 'C. Vladimir',
+        realName: 'C. Robert',
         shiftleader: false,
     },
     operator5 = {
         name: 'Operator 5',
-        realName: 'D. Matus',
+        realName: 'D. Peter',
         shiftleader: true,
     },
     operator6 = {
         name: 'Operator 6',
-        realName: 'G. Roman',
+        realName: 'G. Stefan',
         shiftleader: true,
     },
     operator7 = {
         name: 'Operator 7',
-        realName: 'H. Michaela',
+        realName: 'H. Jaroslav',
         shiftleader: false,
     },
     operator8 = {
         name: 'Operator 8',
-        realName: 'H. Patrik',
+        realName: 'H. Lukas',
         shiftleader: false,
         operatorDay: []
     },
     operator9 = {
         name: 'Operator 9',
-        realName: 'H. Andrej',
+        realName: 'H. Richard',
         shiftleader: false,
     },
     operator10 = {
         name: 'Operator 10',
-        realName: 'H. Pavol',
+        realName: 'H. Viktor',
         shiftleader: true,
     },
      operator11 = {
         name: 'Operator 11',
-        realName: 'H. Milos',
+        realName: 'H. Miroslav',
         shiftleader: true,
     },
     operator12 = {
         name: 'Operator 12',
-        realName: 'J. Erik',
+        realName: 'J. Eduard',
         shiftleader: false,
     },
     operator13 = {
         name: 'Operator 13',
-        realName: 'M. Milan',
+        realName: 'M. Radoslav',
         shiftleader: false,
     },
     operator14 = {
         name: 'Operator 14',
-        realName: 'M. Tomas',
+        realName: 'M. Marek',
         shiftleader: true,
     },
     operator15 = {
         name: 'Operator 15',
-        realName: 'P. Dominik',
+        realName: 'P. Juraj',
         shiftleader: false,
     },
     operator16 = {
         name: 'Operator 16',
-        realName: 'S. Tomas',
+        realName: 'S. Filip',
         shiftleader: true,
     },
     operator17 = {
         name: 'Operator 17',
-        realName: 'Z. Jozef',
+        realName: 'Z. Frantisek',
         shiftleader: false,
     },
     operator18 = {
         name: 'Operator 18',
-        realName: 'M. Ivan',
+        realName: 'M. Lubomir',
         shiftleader: false,
     },
     operator19 = {
         name: 'Operator 19',
-        realName: 'K. Patrik',
+        realName: 'K. Martin',
         shiftleader: false,
     },
     operator20 = {
         name: 'Operator 20',
-        realName: 'P. Fabian',
+        realName: 'P. Marian',
         shiftleader: false,
     },
     operator21 = {
         name: 'Operator 21',
-        realName: 'M. Matus',
+        realName: 'M. Adam',
         shiftleader: false,
     }]

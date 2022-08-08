@@ -1,24 +1,19 @@
 const summaryGrid = document.querySelector('.summaryGridContainer')
 
 //Set current day color top panel------------------------------------
-let currentDay = date.getDate()
-let currentDayMonth = 'topLineMonth ' + currentDay
-let currentDayDay = 'topLineDay ' + currentDay
-let topLineDay = document.getElementById(currentDayDay)
-let topLineMonth = document.getElementById(currentDayMonth)
+let currentDay = new Date().getDate()
+let topLineDay = document.getElementById('topLineDay ' + currentDay)
+let topLineMonth = document.getElementById('topLineMonth ' + currentDay)
 topLineDay.style.backgroundColor = currentDayColor
 topLineMonth.style.backgroundColor = currentDayColor
 //-------------------------------------------------------------------
-
 $('.summaryGridContainer').css('grid-template-columns', gridColumns)
 
 const sumGrid = (operators) => {
     for (i = 0; i < monthDays; i++) {
-        let newElement = document.createElement('div')
-        summaryGrid.appendChild(newElement)
-        newElement.textContent = '-'
-        $(newElement).attr('id', operators + ' ' + (i+1))
-        $(newElement).addClass('sumGrid')
+        let newElement = new NewElement('div', 'id', operators + ' ' + (i+1), '-', summaryGrid)
+        newElement.createNewElement()
+        $(newElement.elType).addClass('sumGrid')
     }
 }
 
@@ -26,8 +21,6 @@ sumGrid('operatorsD')
 sumGrid('shiftleaderD')
 sumGrid('operatorsN')
 sumGrid('shiftleaderN')
-
-
 
 const styleSummaryTable = (array, color) => {
     let myArray = []
@@ -60,8 +53,7 @@ if (getNextMonth === 0 ||
 
 //Summary info setup - function is called from maingrid.js on click event
 //this function textcontent shiftleader realname
-function summaryFunction(e, shift) {
-    let splitId = e.split(' ')
+function summaryFunction(splitId, shift) {
     splitId[1]
     let selectedOperator = splitId[1] - 1
 
@@ -85,10 +77,8 @@ function summaryFunction(e, shift) {
     }
     summaryOperatorsCount(splitId)
 }
-//on dblclick vyresetovat bunku v summary grid - funkciu mozem definovat tu a vyvolat ju v dbl click evente
-
-
-function skuska(id) {
+//On dblclick reset cell and get another SL
+function summaryRecountSL(id) {
     let index = id[1] - 1
     let index2 = id[2]
     let slID = document.getElementById('shiftleaderD ' + index2)
@@ -98,7 +88,7 @@ function skuska(id) {
     } else if (operatorsArray[index].realName === slIDN.textContent) {
         slIDN.textContent = '-'
     }
-
+//if clicked on SL, get another SL and put in summary cell
     if (operatorsArray[index].shiftleader === true){
         for (i = 1; i <= operatorsArray.length; i++) {
             let columnLoop = document.getElementById('Operator ' + i + ' ' + id[2])
@@ -117,21 +107,21 @@ function skuska(id) {
     }
 }
 //Looping through columns if there is D or N as text content-----------------------------------
-function summaryOperatorsCount(id) {
+function summaryOperatorsCount(splitId) {
     let dayshiftCount = 0
     let nightshiftCount = 0
     for (i = 1; i <= operatorsArray.length; i++) {
-        let columnLoop = document.getElementById('Operator ' + i + ' ' + id[2])
+        let columnLoop = document.getElementById('Operator ' + i + ' ' + splitId[2])
         if (columnLoop.textContent === 'D') {
             dayshiftCount++
         } else if (columnLoop.textContent === 'N') {
             nightshiftCount++
         }
     }
-    let getComputeElementD = document.getElementById('operatorsD ' + id[2])
-    let getComputeElementN = document.getElementById('operatorsN ' + id[2])
+    let getComputeElementD = document.getElementById('operatorsD ' + splitId[2])
+    let getComputeElementN = document.getElementById('operatorsN ' + splitId[2])
     
-//Updating cells in summary table----------------------------------------------------
+//Summary operators counter + styling RED/GREEN ------------------------------------------------
     if (dayshiftCount === 0) {
         summaryCellUpdate(getComputeElementD, '13px', 'none', white, '-')
     } else if (dayshiftCount > 0 && dayshiftCount < 4) {
@@ -147,7 +137,6 @@ function summaryOperatorsCount(id) {
     } else if (nightshiftCount >= 4) {
         summaryCellUpdate(getComputeElementN, '20px', 'none', 'lightgreen', nightshiftCount)
     }
-    
 }
 
 const summaryCellUpdate = (element, size, shadow, color, textcontent) => {

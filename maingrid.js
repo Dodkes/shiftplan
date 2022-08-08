@@ -9,95 +9,80 @@ function controlPanelReset(id) {
 }
 
 function setup(id) {
+    controlPanelReset(id)
     switch (id) {
-        case 'dayshift': controlPanelReset(id), dayshift = true
+        case 'dayshift': dayshift = true
         break;
-        case 'nightshift': controlPanelReset(id), nightshift = true
+        case 'nightshift': nightshift = true
         break;
-        case 'vacation': controlPanelReset(id), vacation = true
+        case 'vacation': vacation = true
         break;
-        case 'paragraf': controlPanelReset(id), paragraf = true
+        case 'paragraf': paragraf = true
         break;
-        case 'freeshift': controlPanelReset(id), freeshift = true
+        case 'freeshift': freeshift = true
         break;
-        default: ;
+        default:;
     }
 }
 
 //Click to invoke proper function shift
 $(maingridContainer).children().click((event)=>{
     console.log('Clicked ID is ' + event.target.id)
-    let clickedIdSplit = event.target.id.split(' ')
+    let clickedIdSplit = splitId(event.target)
     if (clickedIdSplit[0] === 'Operator') {
         if (event.target.id){
             if (dayshift){
                 editorMode = true
-                shiftFunction(event, dayShiftBackgroundColor, 'D', 'black')
-                summaryFunction(event.target.id, 'D')//function is defined in summaryGrid.js
+                shiftCellStyle(event, dayShiftBackgroundColor, 'D', 'black')
+                summaryFunction(clickedIdSplit, 'D')//function is defined in summaryGrid.js
             } else if (nightshift) {
                 editorMode = true
-                shiftFunction(event, nightShiftBackgroundColor, 'N', 'black')
-                summaryFunction(event.target.id, 'N')//function is defined in summaryGrid.js
+                shiftCellStyle(event, nightShiftBackgroundColor, 'N', 'black')
+                summaryFunction(clickedIdSplit, 'N')//function is defined in summaryGrid.js
             } else if (vacation) {
                 editorMode = false
-                shiftFunction(event, vacationBackgroundColor, 'V', white)
-                skuska(clickedIdSplit)
+                shiftCellStyle(event, vacationBackgroundColor, 'V', white)
+                summaryRecountSL(clickedIdSplit)
                 summaryOperatorsCount(clickedIdSplit)
             } else if (paragraf) {
                 editorMode = false
-                shiftFunction(event, paragrafColor, 'P', white)
-                skuska(clickedIdSplit)
+                shiftCellStyle(event, paragrafColor, 'P', white)
+                summaryRecountSL(clickedIdSplit)
                 summaryOperatorsCount(clickedIdSplit)
             } else if (freeshift) {
                 editorMode = false
-                shiftFunction(event, freeShiftBackgroundColor, '-', white)
-                skuska(clickedIdSplit)
+                shiftCellStyle(event, freeShiftBackgroundColor, '-', white)
+                summaryRecountSL(clickedIdSplit)
                 summaryOperatorsCount(clickedIdSplit)
             }
         } 
     }
 })
 
-function shiftFunction(event, color, shift, textColor) {
-    event.target.style.background = color
-    event.target.textContent = shift
-    event.target.style.color = textColor
-}
-
 //Doubleclick to reset
 $(maingridContainer).children().dblclick((event)=>{
     let clickedIdSplit = event.target.id.split(' ')
     if (clickedIdSplit[0] === 'Operator') {
-        event.target.style.background = 'none'
-        event.target.textContent = '-'
-        event.target.style.color = white
+        shiftCellStyle(event, 'rgba(255,255,255,0)', '-', white)
         summaryOperatorsCount(clickedIdSplit)
         if (editorMode === true) {
-            skuska(clickedIdSplit)
+            summaryRecountSL(clickedIdSplit)
         }
     }
     //if founds weekend/holiday set to respective color
     for (x of saturdayArray) {
         if (clickedIdSplit[2] === x){
-            event.target.style.backgroundColor = saturdayColor
-            event.target.style.color = white
-            event.target.textContent = '-'
+            shiftCellStyle(event, saturdayColor, '-', white)
         }
     }
-
     for (y of sundayArray) {
         if (clickedIdSplit[2] === y) {
-            event.target.style.backgroundColor = sundayColor
-            event.target.style.color = white
-            event.target.textContent = '-'
+            shiftCellStyle(event, sundayColor, '-', white)
         }
     }
-
     for (z of currentHolidayMonth) {
         if (clickedIdSplit[2] == z) {
-            event.target.style.backgroundColor = holidayColor
-            event.target.style.color = white
-            event.target.textContent = '-'
+            shiftCellStyle(event, holidayColor, '-', white)
         }
     }
 })
@@ -118,3 +103,9 @@ document.addEventListener('keydown',(event)=>{
         default: ;
     }
 })
+
+function shiftCellStyle(event, color, shift, textColor) {
+    event.target.style.background = color
+    event.target.textContent = shift
+    event.target.style.color = textColor
+}

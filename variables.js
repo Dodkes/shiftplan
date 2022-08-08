@@ -9,7 +9,6 @@ const holidays = {
     december: [24, 25, 26]
 }
 let editorMode = false
-let date = new Date
 //Used colors
 const white = 'white'
 const paragrafColor = 'linear-gradient(to right, #bc4e9c, #f80759)'
