@@ -1,11 +1,11 @@
 const maingridContainer = document.querySelector('.mainGrid')
-let falseArray = [false, false, false, false, false]
-let [dayshift, nightshift, vacation, paragraf, freeshift] = falseArray
+let falseArray = [false, false, false, false, false, false]
+let [dayshift, nightshift, vacation, paragraf, freeshift, remove] = falseArray
 
 function controlPanelReset(id) {
-    [dayshift, nightshift, vacation, paragraf, freeshift] = falseArray
-    $('.controlPanel').children().css({'border-color': 'black' })
-    document.getElementById(id).style.borderColor = 'chartreuse'
+    [dayshift, nightshift, vacation, paragraf, freeshift, remove] = falseArray
+    $('.controlPanel').children().css({'outline' : 'none' })
+    document.getElementById(id).style.outline = '3px solid #00e673'
 }
 
 function setup(id) {
@@ -21,6 +21,7 @@ function setup(id) {
         break;
         case 'freeshift': freeshift = true
         break;
+        case 'remove': remove = true
         default:;
     }
 }
@@ -34,10 +35,12 @@ $(maingridContainer).children().click((event)=>{
             if (dayshift){
                 editorMode = true
                 shiftCellStyle(event, dayShiftBackgroundColor, 'D', 'black')
+                summaryRecountSL(clickedIdSplit)
                 summaryFunction(clickedIdSplit, 'D')//function is defined in summaryGrid.js
             } else if (nightshift) {
                 editorMode = true
                 shiftCellStyle(event, nightShiftBackgroundColor, 'N', 'black')
+                summaryRecountSL(clickedIdSplit)
                 summaryFunction(clickedIdSplit, 'N')//function is defined in summaryGrid.js
             } else if (vacation) {
                 editorMode = false
@@ -54,36 +57,31 @@ $(maingridContainer).children().click((event)=>{
                 shiftCellStyle(event, freeShiftBackgroundColor, '-', white)
                 summaryRecountSL(clickedIdSplit)
                 summaryOperatorsCount(clickedIdSplit)
+//RESETING CELL FROM HERE------------------------------------
+            } else if (remove) {
+                shiftCellStyle(event, 'rgba(255,255,255,0)', '-', white)
+                summaryOperatorsCount(clickedIdSplit)
+                if (editorMode === true) {
+                    summaryRecountSL(clickedIdSplit)
+                }
+//if founds weekend/holiday resets to respective color
+            for (x of saturdayArray) {
+                if (clickedIdSplit[2] === x){
+                    shiftCellStyle(event, saturdayColor, '-', white)
+                }
+            }
+            for (y of sundayArray) {
+                if (clickedIdSplit[2] === y) {
+                    shiftCellStyle(event, sundayColor, '-', white)
+                }
+            }
+            for (z of currentHolidayMonth) {
+                if (clickedIdSplit[2] == z) {
+                    shiftCellStyle(event, holidayColor, '-', white)
+                }
+            }
             }
         } 
-    }
-})
-
-//Doubleclick to reset
-$(maingridContainer).children().dblclick((event)=>{
-    let clickedIdSplit = event.target.id.split(' ')
-    if (clickedIdSplit[0] === 'Operator') {
-        shiftCellStyle(event, 'rgba(255,255,255,0)', '-', white)
-        summaryOperatorsCount(clickedIdSplit)
-        if (editorMode === true) {
-            summaryRecountSL(clickedIdSplit)
-        }
-    }
-    //if founds weekend/holiday set to respective color
-    for (x of saturdayArray) {
-        if (clickedIdSplit[2] === x){
-            shiftCellStyle(event, saturdayColor, '-', white)
-        }
-    }
-    for (y of sundayArray) {
-        if (clickedIdSplit[2] === y) {
-            shiftCellStyle(event, sundayColor, '-', white)
-        }
-    }
-    for (z of currentHolidayMonth) {
-        if (clickedIdSplit[2] == z) {
-            shiftCellStyle(event, holidayColor, '-', white)
-        }
     }
 })
 
@@ -100,6 +98,7 @@ document.addEventListener('keydown',(event)=>{
         break;
         case 'f': setup('freeshift')
         break;
+        case ' ': setup('remove')
         default: ;
     }
 })

@@ -77,7 +77,7 @@ function summaryFunction(splitId, shift) {
     }
     summaryOperatorsCount(splitId)
 }
-//On dblclick reset cell and get another SL
+//On REMOVE event reset cell and get another SL
 function summaryRecountSL(id) {
     let index = id[1] - 1
     let index2 = id[2]
@@ -92,15 +92,18 @@ function summaryRecountSL(id) {
     if (operatorsArray[index].shiftleader === true){
         for (i = 1; i <= operatorsArray.length; i++) {
             let columnLoop = document.getElementById('Operator ' + i + ' ' + id[2])
-            if (columnLoop.textContent === 'D') {
-                if (operatorsArray[i-1].shiftleader === true) {
-                    slID.textContent = operatorsArray[i-1].realName
+            if (slID.textContent === '-') {
+                if (columnLoop.textContent === 'D') {
+                    if (operatorsArray[i-1].shiftleader === true) {
+                        slID.textContent = operatorsArray[i-1].realName
+                    }
                 }
             }
-    
-            if (columnLoop.textContent === 'N') {
-                if (operatorsArray[i-1].shiftleader === true) {
-                    slIDN.textContent = operatorsArray[i-1].realName
+            if (slIDN.textContent === '-') {
+                if (columnLoop.textContent === 'N') {
+                    if (operatorsArray[i-1].shiftleader === true) {
+                        slIDN.textContent = operatorsArray[i-1].realName
+                    }
                 }
             }
         }
@@ -133,9 +136,9 @@ function summaryOperatorsCount(splitId) {
     if (nightshiftCount === 0) {
         summaryCellUpdate(getComputeElementN, '13px', 'none', white, '-')
     } else if (nightshiftCount > 0 && nightshiftCount < 4) {
-        summaryCellUpdate(getComputeElementN, '20px', 'none', 'red', nightshiftCount)
+        summaryCellUpdate(getComputeElementN, '20px', '1px 2px 5px black', 'red', nightshiftCount)
     } else if (nightshiftCount >= 4) {
-        summaryCellUpdate(getComputeElementN, '20px', 'none', 'lightgreen', nightshiftCount)
+        summaryCellUpdate(getComputeElementN, '20px', '1px 2px 5px black', 'lightgreen', nightshiftCount)
     }
 }
 

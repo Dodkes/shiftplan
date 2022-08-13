@@ -83,7 +83,6 @@ h1{
     cursor: pointer;
     box-shadow: 1px 4px 5px black;
     font-weight: bold;
-    outline: none;
  }
 
  #dayshift, #nightshift {
@@ -151,4 +150,9 @@ h1{
     max-height: 38px;
     max-width: 70px;
     width: 58.4px;
+}
+
+#remove { 
+   float: right;
+   width: 20vw;
 }
