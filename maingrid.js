@@ -82,6 +82,7 @@ $(maingridContainer).children().click((event)=>{
             }
             }
         } 
+        saveOperatorArrayData(clickedIdSplit)
     }
 })
 
@@ -89,17 +90,17 @@ $(maingridContainer).children().click((event)=>{
 document.addEventListener('keydown',(event)=>{
     switch(event.key){
         case 'd': setup('dayshift')
-        break;
+            break;
         case 'n': setup('nightshift')
-        break;
+            break;
         case 'v': setup('vacation')
-        break;
+            break;
         case 'p': setup('paragraf')
-        break;
+            break;
         case 'f': setup('freeshift')
-        break;
+            break;
         case ' ': setup('remove')
-        default: ;
+            default: ;
     }
 })
 
@@ -107,4 +108,24 @@ function shiftCellStyle(event, color, shift, textColor) {
     event.target.style.background = color
     event.target.textContent = shift
     event.target.style.color = textColor
+}
+
+const saveOperatorArrayData = (operatorId) => {
+    operatorsArray[operatorId[1] - 1].workday = []
+    let currentOperatorArray = operatorsArray[operatorId[1] - 1].workday
+
+    for (let i = 1; i <= monthDays; i++) {
+        let lineUnit = document.getElementById('Operator ' + operatorId[1] + ' ' + i)
+        switch (lineUnit.textContent) {
+            case 'D': currentOperatorArray.push({D: i})
+                break;
+            case 'N' : currentOperatorArray.push({N: i})
+                break;
+            case 'V' : currentOperatorArray.push({V: i})
+                break;
+            case 'P' : currentOperatorArray.push({P: i})
+                break;
+            default: ;
+        }
+    }
 }

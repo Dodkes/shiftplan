@@ -152,3 +152,6 @@ const summaryCellUpdate = (element, size, shadow, color, textcontent) => {
 //Po zmene napr. D SL na N mi neaktualizuje ak je niekto iny SL ale da ze je zmena bez SL pricom realne tam je iny SL
 //nemam nastavene ze to loopuje aj po zmene shifty, resp. je to nastavene len na dbl click event
 //event nastavit z DBL clicka na nieco ine pretoze sa prekryvaju
+
+
+//Vytvorit malu class ktora bude vytvarat objekty ktore budu obsahovat ID operatora, resp konkretny den a textContent, teda to ci tam ma denku nocku V freeshift atd

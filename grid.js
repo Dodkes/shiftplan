@@ -14,7 +14,7 @@ for (i = 0; i < operatorsArray.length; i++){
     shiftleaderColor(operatorsArray[i].shiftleader, columnOperator.elType)
 }
 
-//Main Grid creation loop
+//Main Grid creation loop - grid with textContent -
 const mainGrid = () => {
     let dayLoop = 1
     let operatorLoop = 0
