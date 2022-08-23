@@ -21,15 +21,15 @@ document.querySelector('#currentMonth').textContent = currentMonth
 
 switch (currentMonth){
     case 'February': monthDays = 28, dayLineGrid(monthDays)
-    break;
+        break;
     case 'April': monthDays = 30, dayLineGrid(monthDays)
-    break;
+        break;
     case 'June': monthDays = 30, dayLineGrid(monthDays)
-    break;
+        break;
     case 'September': monthDays = 30, dayLineGrid(monthDays)
-    break;
+        break;
     case 'November': monthDays = 30, dayLineGrid(monthDays)
-    break;
+        break;
     default: monthDays = 31, dayLineGrid(monthDays)
 }
 

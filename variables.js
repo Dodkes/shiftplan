@@ -8,6 +8,7 @@ const holidays = {
     november: [1, 17],
     december: [24, 25, 26]
 }
+let myJSON
 let editorMode = false
 //Used colors
 const white = 'white'

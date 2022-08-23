@@ -1,4 +1,7 @@
-const operatorsArray = 
+let operatorsArray
+
+if (localStorage.getItem('operatorsJSON') === null) {
+    operatorsArray = 
     [operator1 = {
         name: 'Operator 1',
         realName: 'A. Jan',
@@ -125,3 +128,7 @@ const operatorsArray =
         shiftleader: false,
         workday: [],
     }]
+} else {
+    operatorsArray = JSON.parse(localStorage.getItem('operatorsJSON'))
+    console.log('local storage existuje')
+}

@@ -104,28 +104,10 @@ document.addEventListener('keydown',(event)=>{
     }
 })
 
-function shiftCellStyle(event, color, shift, textColor) {
-    event.target.style.background = color
-    event.target.textContent = shift
-    event.target.style.color = textColor
-}
-
-const saveOperatorArrayData = (operatorId) => {
-    operatorsArray[operatorId[1] - 1].workday = []
-    let currentOperatorArray = operatorsArray[operatorId[1] - 1].workday
-
-    for (let i = 1; i <= monthDays; i++) {
-        let lineUnit = document.getElementById('Operator ' + operatorId[1] + ' ' + i)
-        switch (lineUnit.textContent) {
-            case 'D': currentOperatorArray.push({D: i})
-                break;
-            case 'N' : currentOperatorArray.push({N: i})
-                break;
-            case 'V' : currentOperatorArray.push({V: i})
-                break;
-            case 'P' : currentOperatorArray.push({P: i})
-                break;
-            default: ;
-        }
-    }
+function shiftCellStyle(event, color, shift, textColor, id) {
+    let getId
+    event ? getId = event.target : getId = id
+    getId.style.background = color
+    getId.textContent = shift
+    getId.style.color = textColor
 }
