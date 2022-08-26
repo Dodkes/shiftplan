@@ -13,6 +13,8 @@ const saveOperatorArrayData = (operatorId) => {
                 break;
             case 'P' : currentOperatorArray[i] = 'P'
                 break;
+            case '-': currentOperatorArray[i] = '-'
+                break;
             default: ;
         }
     }
@@ -61,7 +63,3 @@ function loadCellData (halfId, day, shift, color, textColor) {
     cellId.textContent = shift
     shiftCellStyle(null, color, shift, textColor, cellId)
 }
-
-//Local storage mi nevymazava po stlaceni space
-//spravit najprv render from local storage funkciu ktora sa vyvola po nacitani stranky lebo
-//neni potrebne renderovat po kazdom clicku
