@@ -2,6 +2,7 @@
     margin: 0;
     box-sizing: border-box;
     padding: 0;
+    color: white;
 }
 
 h1{
@@ -87,6 +88,7 @@ h1{
 
  #dayshift, #nightshift {
     background: linear-gradient(to right, #e0eafc, #cfdef3);
+    color:#0f0c29;
  }
 
  #vacation, #freeshift {
@@ -97,6 +99,7 @@ h1{
 
  #paragraf {
     background: linear-gradient(to right, #bc4e9c, #f80759);
+    color: #0f0c29;
  }
  
  .summaryGridContainer{
@@ -154,10 +157,15 @@ h1{
 #remove { 
    float: right;
    width: 20vw;
+   color: #0f0c29;
 }
 
 #reset {
    background-color: #fc3d3d;
    color: white;
    text-shadow: 1px 2px 2px black;
+}
+
+.tooltip{
+   border: none;
 }

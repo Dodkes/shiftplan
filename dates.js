@@ -59,3 +59,5 @@ switch (currentMonth){
             }
         }
     }
+
+document.querySelector('title').textContent = `Shiftplan - ${currentMonth}`

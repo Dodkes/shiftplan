@@ -12,6 +12,9 @@ for (i = 0; i < operatorsArray.length; i++){
     let columnOperator = new NewElement('div', 'id', 'line ' + (i + 1), operatorsArray[i].realName, gridContainer)
     columnOperator.createNewElement()
     shiftleaderColor(operatorsArray[i].shiftleader, columnOperator.elType)
+    $(columnOperator.elType).attr('data-bs-toggle', 'tooltip')
+    $(columnOperator.elType).attr('data-bs-html', 'true')
+    columnOperator.elType.title = updateTooltip(operatorsArray[i].workday)
 }
 
 //Main Grid creation loop - grid with textContent -
@@ -34,3 +37,25 @@ const mainGrid = () => {
 }
 
 mainGrid()
+
+//Bootstrap tooltip
+function tooltipRender () {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
+}
+
+function updateTooltip (array) {
+    let [D, N, V, P] = [0, 0, 0, 0]
+    for (count of array) {
+        if (count === 'D') { D++ } 
+        else if (count === 'N') { N++ }
+        else if (count === 'V') { V++ }
+        else if (count === 'P') { P++ }
+    }
+
+    return `D - ${D} <br>N - ${N} <br>V - ${V} <br>P - ${P}`
+}
+
+tooltipRender ()

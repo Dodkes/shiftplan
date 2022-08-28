@@ -81,8 +81,10 @@ $(maingridContainer).children().click((event)=>{
                 }
             }
             }
-        } 
+        } //Tooltip update + save operators data
         saveOperatorArrayData(clickedIdSplit)
+        document.getElementById(`line ${clickedIdSplit[1]}`).title = updateTooltip(operatorsArray[clickedIdSplit[1]-1].workday)
+        tooltipRender()
     }
 })
 
