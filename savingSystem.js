@@ -63,3 +63,20 @@ function loadCellData (halfId, day, shift, color, textColor) {
     cellId.textContent = shift
     shiftCellStyle(null, color, shift, textColor, cellId)
 }
+
+
+// Reload summaryGrid according to mainGrid data loaded from local storage
+var myArray = []
+function loadData () {
+    for (i = 1; i <= monthDays; i++) {
+        let a = document.getElementById('Operator 1 ' + i)
+        let b = splitId(a)
+        myArray.push(b)
+    }
+}
+
+loadData()
+
+myArray.forEach(element => {
+    summaryOperatorsCount(element)
+});

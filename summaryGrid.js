@@ -22,6 +22,7 @@ sumGrid('shiftleaderD')
 sumGrid('operatorsN')
 sumGrid('shiftleaderN')
 
+//style weekends, holidays
 const styleSummaryTable = (array, color) => {
     let myArray = []
     for (x of array) {
@@ -52,7 +53,7 @@ if (getNextMonth === 0 ||
 }
 
 //Summary info setup - function is called from maingrid.js on click event
-//this function textcontent shiftleader realname
+//this function sets textcontent shiftleader realname
 function summaryFunction(splitId, shift) {
     splitId[1]
     let selectedOperator = splitId[1] - 1
@@ -63,14 +64,14 @@ function summaryFunction(splitId, shift) {
 
     if (operatorsArray[selectedOperator].shiftleader === true && shift === 'D') {
         dayCell.textContent = operatorsArray[selectedOperator].realName
-        $(dayCell).addClass('summaryCellStyleDayshift')
+        $(dayCell).addClass('ssummaryCellSLStyle')
         if (operatorsArray[selectedOperator].realName === nightCell.textContent) {
             nightCell.textContent = '-'
         }
     }
     if (operatorsArray[selectedOperator].shiftleader && shift === 'N') {
         nightCell.textContent = operatorsArray[selectedOperator].realName
-        $(nightCell).addClass('summaryCellStyleNightshift')
+        $(nightCell).addClass('ssummaryCellSLStyle')
         if (operatorsArray[selectedOperator].realName === dayCell.textContent) {
             dayCell.textContent = '-'
         }
@@ -123,7 +124,6 @@ function summaryOperatorsCount(splitId) {
     }
     let getComputeElementD = document.getElementById('operatorsD ' + splitId[2])
     let getComputeElementN = document.getElementById('operatorsN ' + splitId[2])
-    
 //Summary operators counter + styling RED/GREEN ------------------------------------------------
     if (dayshiftCount === 0) {
         summaryCellUpdate(getComputeElementD, '13px', 'none', white, '-')
@@ -148,7 +148,3 @@ const summaryCellUpdate = (element, size, shadow, color, textcontent) => {
     element.style.color = color
     element.textContent = textcontent
 }
-//SummaryGrid Issues:
-//Po zmene napr. D SL na N mi neaktualizuje ak je niekto iny SL ale da ze je zmena bez SL pricom realne tam je iny SL
-//nemam nastavene ze to loopuje aj po zmene shifty, resp. je to nastavene len na dbl click event
-//event nastavit z DBL clicka na nieco ine pretoze sa prekryvaju

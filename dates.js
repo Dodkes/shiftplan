@@ -2,7 +2,7 @@ const month = ['January', 'February', 'March', 'April', 'May', 'June', 'July', '
 const sundayArray = []
 const saturdayArray = []
 let monthDays
-let getNextMonth = new Date().getMonth()
+let getNextMonth = new Date().getMonth()+1
 let gridColumns = ''
 
 //GET FIRST DAY OF THE NEXT MONTH
