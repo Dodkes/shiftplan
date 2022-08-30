@@ -1,28 +1,30 @@
 const maingridContainer = document.querySelector('.mainGrid')
-let falseArray = [false, false, false, false, false, false]
-let [dayshift, nightshift, vacation, paragraf, freeshift, remove] = falseArray
+let falseArray = [false, false, false, false, false, false, false]
+let [dayshift, nightshift, vacation, paragraf, freeshift, remove, shiftleader] = falseArray
 
 function controlPanelReset(id) {
-    [dayshift, nightshift, vacation, paragraf, freeshift, remove] = falseArray
+    [dayshift, nightshift, vacation, paragraf, freeshift, remove, shiftleader] = falseArray
     $('.controlPanel').children().css({'outline' : 'none' })
-    document.getElementById(id).style.outline = '3px solid #00e673'
+        document.getElementById(id).style.outline = '3px solid #00e673'
 }
 
 function setup(id) {
     controlPanelReset(id)
     switch (id) {
         case 'dayshift': dayshift = true
-        break;
+            break;
         case 'nightshift': nightshift = true
-        break;
+            break;
         case 'vacation': vacation = true
-        break;
+            break;
         case 'paragraf': paragraf = true
-        break;
+            break;
         case 'freeshift': freeshift = true
-        break;
+            break;
         case 'remove': remove = true
-        default:;
+            break;
+        case 'shiftleader': shiftleader = true
+            default:;
     }
 }
 
@@ -33,37 +35,26 @@ $(maingridContainer).children().click((event)=>{
     if (clickedIdSplit[0] === 'Operator') {
         if (event.target.id){
             if (dayshift){
-                editorMode = true
                 shiftCellStyle(event, dayShiftBackgroundColor, 'D', 'black')
-                summaryRecountSL(clickedIdSplit)
-                summaryFunction(clickedIdSplit, 'D')//function is defined in summaryGrid.js
-            } else if (nightshift) {
-                editorMode = true
-                shiftCellStyle(event, nightShiftBackgroundColor, 'N', 'black')
-                summaryRecountSL(clickedIdSplit)
-                summaryFunction(clickedIdSplit, 'N')//function is defined in summaryGrid.js
-            } else if (vacation) {
-                editorMode = false
-                shiftCellStyle(event, vacationBackgroundColor, 'V', white)
-                summaryRecountSL(clickedIdSplit)
                 summaryOperatorsCount(clickedIdSplit)
+            } else if (nightshift) {
+                shiftCellStyle(event, nightShiftBackgroundColor, 'N', 'black')
+                summaryOperatorsCount(clickedIdSplit)
+            } else if (vacation) {
+                shiftCellStyle(event, vacationBackgroundColor, 'V', white)
             } else if (paragraf) {
-                editorMode = false
                 shiftCellStyle(event, paragrafColor, 'P', white)
-                summaryRecountSL(clickedIdSplit)
                 summaryOperatorsCount(clickedIdSplit)
             } else if (freeshift) {
-                editorMode = false
                 shiftCellStyle(event, freeShiftBackgroundColor, '-', white)
-                summaryRecountSL(clickedIdSplit)
                 summaryOperatorsCount(clickedIdSplit)
+            } else if (shiftleader) {
+                slCellColor(event.target)
 //RESETING CELL FROM HERE------------------------------------
             } else if (remove) {
+                popSLfromSummaryGrid(event.target)
                 shiftCellStyle(event, 'rgba(255,255,255,0)', '-', white)
                 summaryOperatorsCount(clickedIdSplit)
-                if (editorMode === true) {
-                    summaryRecountSL(clickedIdSplit)
-                }
 //if founds weekend/holiday resets to respective color
             for (x of saturdayArray) {
                 if (clickedIdSplit[2] === x){
@@ -102,6 +93,9 @@ document.addEventListener('keydown',(event)=>{
         case 'f': setup('freeshift')
             break;
         case ' ': setup('remove')
+            break;
+        case 's': setup('shiftleader')
+            break;
             default: ;
     }
 })
@@ -113,3 +107,51 @@ function shiftCellStyle(event, color, shift, textColor, id) {
     getId.textContent = shift
     getId.style.color = textColor
 }
+
+function slCellColor (element) {
+    let id = splitId(element)
+    let column = id[2]
+
+    if (shiftleader && operatorsArray[id[1] - 1].shiftleader) {
+        checkSL(element, 'D', column, 'shiftleaderD')
+        checkSL(element, 'N', column, 'shiftleaderN')
+    }
+}
+
+function checkSL (element, shift, column, shiftGrid) {
+    if (element.textContent === shift ) {
+        for (i = 0; i < operatorsArray.length; i++) {
+            let columnCell = document.getElementById(`Operator ${i + 1} ${column}`)
+            if (columnCell.textContent === shift) {
+                columnCell.style.background = dayShiftBackgroundColor
+            }
+        }
+        element.style.background = SLcellColor
+        let clickedOperator = splitId(element)[1]
+        let operator = operatorsArray[clickedOperator - 1]. realName
+        let x = document.getElementById(`${shiftGrid} ${column}`)
+        x.style.color = 'wheat'
+        x.style.textShadow = '1px 2px 5px black'
+        x.textContent = operator
+    }
+}
+
+function popSLfromSummaryGrid (e) {
+    if (e.style.background === 'linear-gradient(320deg, rgb(252, 208, 61) 0%, rgb(255, 231, 0) 100%)') {
+        if (e.textContent === 'D') {
+            summaryCellUpdate(getElementColumn(e, 'shiftleaderD'), '13px', 'none', white, '-')
+        } else if (e.textContent === 'N') {
+            summaryCellUpdate(getElementColumn(e, 'shiftleaderN'), '13px', 'none', white, '-')
+        }
+    }
+}
+
+function getElementColumn (clickedElement, targetElementId) {
+    let splitElement = splitId(clickedElement)
+    let column = splitElement[2]
+    return document.getElementById(`${targetElementId} ${column}`)
+}
+
+//treba preratat SL po zmene z D na N
+//treba nastavit na remove aby sa shiftleader vymazal
+//Mozem hodit operatorov do 2 poli pre D a N zmeny a po nacitani vytiahnut data z tamade a vyrenderovat mena SL

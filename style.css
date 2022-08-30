@@ -89,6 +89,8 @@ h1{
  #dayshift, #nightshift {
     background: linear-gradient(to right, #e0eafc, #cfdef3);
     color:#0f0c29;
+   text-shadow: 1px 2px 5px grey;
+
  }
 
  #vacation, #freeshift {
@@ -97,8 +99,16 @@ h1{
     background-color: #696969;
  }
 
+#shiftleader {
+   color: black;
+   text-shadow: 1px 2px 5px grey;
+   background: linear-gradient(320deg, rgba(252,208,61,1) 0%, rgba(255,231,0,1) 100%);
+   margin: 0 0 0 50px;
+}
+
  #paragraf {
     background: linear-gradient(to right, #bc4e9c, #f80759);
+   text-shadow: 1px 2px 5px grey;
     color: #0f0c29;
  }
  
@@ -139,11 +149,6 @@ h1{
 
 .summaryLeftPanel, .summaryGridContainer {
     text-shadow: none;
-}
-
-.ssummaryCellSLStyle {
-    color: wheat;
-    text-shadow: 1px 2px 5px black;
 }
 
 .sumGrid {

@@ -53,63 +53,6 @@ if (getNextMonth === 0 ||
 }
 
 //Summary info setup - function is called from maingrid.js on click event
-//this function sets textcontent shiftleader realname
-function summaryFunction(splitId, shift) {
-    splitId[1]
-    let selectedOperator = splitId[1] - 1
-
-    let dayCell = document.getElementById('shiftleaderD ' + splitId[2])
-    let nightCell = document.getElementById('shiftleaderN ' + splitId[2])
-    
-
-    if (operatorsArray[selectedOperator].shiftleader === true && shift === 'D') {
-        dayCell.textContent = operatorsArray[selectedOperator].realName
-        $(dayCell).addClass('ssummaryCellSLStyle')
-        if (operatorsArray[selectedOperator].realName === nightCell.textContent) {
-            nightCell.textContent = '-'
-        }
-    }
-    if (operatorsArray[selectedOperator].shiftleader && shift === 'N') {
-        nightCell.textContent = operatorsArray[selectedOperator].realName
-        $(nightCell).addClass('ssummaryCellSLStyle')
-        if (operatorsArray[selectedOperator].realName === dayCell.textContent) {
-            dayCell.textContent = '-'
-        }
-    }
-    summaryOperatorsCount(splitId)
-}
-//On REMOVE event reset cell and get another SL
-function summaryRecountSL(id) {
-    let index = id[1] - 1
-    let index2 = id[2]
-    let slID = document.getElementById('shiftleaderD ' + index2)
-    let slIDN = document.getElementById('shiftleaderN ' + index2)
-    if (operatorsArray[index].realName === slID.textContent) {
-        slID.textContent = '-'
-    } else if (operatorsArray[index].realName === slIDN.textContent) {
-        slIDN.textContent = '-'
-    }
-//if clicked on SL, get another SL and put in summary cell
-    if (operatorsArray[index].shiftleader === true){
-        for (i = 1; i <= operatorsArray.length; i++) {
-            let columnLoop = document.getElementById('Operator ' + i + ' ' + id[2])
-            if (slID.textContent === '-') {
-                if (columnLoop.textContent === 'D') {
-                    if (operatorsArray[i-1].shiftleader === true) {
-                        slID.textContent = operatorsArray[i-1].realName
-                    }
-                }
-            }
-            if (slIDN.textContent === '-') {
-                if (columnLoop.textContent === 'N') {
-                    if (operatorsArray[i-1].shiftleader === true) {
-                        slIDN.textContent = operatorsArray[i-1].realName
-                    }
-                }
-            }
-        }
-    }
-}
 //Looping through columns if there is D or N as text content-----------------------------------
 function summaryOperatorsCount(splitId) {
     let dayshiftCount = 0
