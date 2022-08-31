@@ -22,7 +22,6 @@ sumGrid('shiftleaderD')
 sumGrid('operatorsN')
 sumGrid('shiftleaderN')
 
-//style weekends, holidays
 const styleSummaryTable = (array, color) => {
     let myArray = []
     for (x of array) {
@@ -53,6 +52,63 @@ if (getNextMonth === 0 ||
 }
 
 //Summary info setup - function is called from maingrid.js on click event
+//this function textcontent shiftleader realname
+function summaryFunction(splitId, shift) {
+    splitId[1]
+    let selectedOperator = splitId[1] - 1
+
+    let dayCell = document.getElementById('shiftleaderD ' + splitId[2])
+    let nightCell = document.getElementById('shiftleaderN ' + splitId[2])
+    
+
+    if (operatorsArray[selectedOperator].shiftleader === true && shift === 'D') {
+        dayCell.textContent = operatorsArray[selectedOperator].realName
+        $(dayCell).addClass('summaryCellStyleDayshift')
+        if (operatorsArray[selectedOperator].realName === nightCell.textContent) {
+            nightCell.textContent = '-'
+        }
+    }
+    if (operatorsArray[selectedOperator].shiftleader && shift === 'N') {
+        nightCell.textContent = operatorsArray[selectedOperator].realName
+        $(nightCell).addClass('summaryCellStyleNightshift')
+        if (operatorsArray[selectedOperator].realName === dayCell.textContent) {
+            dayCell.textContent = '-'
+        }
+    }
+    summaryOperatorsCount(splitId)
+}
+//On REMOVE event reset cell and get another SL
+function summaryRecountSL(id) {
+    let index = id[1] - 1
+    let index2 = id[2]
+    let slID = document.getElementById('shiftleaderD ' + index2)
+    let slIDN = document.getElementById('shiftleaderN ' + index2)
+    if (operatorsArray[index].realName === slID.textContent) {
+        slID.textContent = '-'
+    } else if (operatorsArray[index].realName === slIDN.textContent) {
+        slIDN.textContent = '-'
+    }
+//if clicked on SL, get another SL and put in summary cell
+    if (operatorsArray[index].shiftleader === true){
+        for (i = 1; i <= operatorsArray.length; i++) {
+            let columnLoop = document.getElementById('Operator ' + i + ' ' + id[2])
+            if (slID.textContent === '-') {
+                if (columnLoop.textContent === 'D') {
+                    if (operatorsArray[i-1].shiftleader === true) {
+                        slID.textContent = operatorsArray[i-1].realName
+                    }
+                }
+            }
+            if (slIDN.textContent === '-') {
+                if (columnLoop.textContent === 'N') {
+                    if (operatorsArray[i-1].shiftleader === true) {
+                        slIDN.textContent = operatorsArray[i-1].realName
+                    }
+                }
+            }
+        }
+    }
+}
 //Looping through columns if there is D or N as text content-----------------------------------
 function summaryOperatorsCount(splitId) {
     let dayshiftCount = 0
@@ -67,6 +123,7 @@ function summaryOperatorsCount(splitId) {
     }
     let getComputeElementD = document.getElementById('operatorsD ' + splitId[2])
     let getComputeElementN = document.getElementById('operatorsN ' + splitId[2])
+    
 //Summary operators counter + styling RED/GREEN ------------------------------------------------
     if (dayshiftCount === 0) {
         summaryCellUpdate(getComputeElementD, '13px', 'none', white, '-')
@@ -91,3 +148,7 @@ const summaryCellUpdate = (element, size, shadow, color, textcontent) => {
     element.style.color = color
     element.textContent = textcontent
 }
+//SummaryGrid Issues:
+//Po zmene napr. D SL na N mi neaktualizuje ak je niekto iny SL ale da ze je zmena bez SL pricom realne tam je iny SL
+//nemam nastavene ze to loopuje aj po zmene shifty, resp. je to nastavene len na dbl click event
+//event nastavit z DBL clicka na nieco ine pretoze sa prekryvaju

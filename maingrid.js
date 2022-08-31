@@ -35,9 +35,11 @@ $(maingridContainer).children().click((event)=>{
     if (clickedIdSplit[0] === 'Operator') {
         if (event.target.id){
             if (dayshift){
+                popSLfromSummaryGrid (event.target)
                 shiftCellStyle(event, dayShiftBackgroundColor, 'D', 'black')
                 summaryOperatorsCount(clickedIdSplit)
             } else if (nightshift) {
+                popSLfromSummaryGrid(event.target)
                 shiftCellStyle(event, nightShiftBackgroundColor, 'N', 'black')
                 summaryOperatorsCount(clickedIdSplit)
             } else if (vacation) {
@@ -152,6 +154,4 @@ function getElementColumn (clickedElement, targetElementId) {
     return document.getElementById(`${targetElementId} ${column}`)
 }
 
-//treba preratat SL po zmene z D na N
-//treba nastavit na remove aby sa shiftleader vymazal
 //Mozem hodit operatorov do 2 poli pre D a N zmeny a po nacitani vytiahnut data z tamade a vyrenderovat mena SL
