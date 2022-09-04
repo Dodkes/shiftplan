@@ -48,7 +48,6 @@ const resetLocalStorage = () => {
 
 function renderGridFromLocalStorage () {
     data = JSON.parse(localStorage.getItem('operatorsJSON'))
-    console.log(data)
     
     for (x of operatorsArray) {
         let operator = x.name
@@ -67,27 +66,29 @@ function renderGridFromLocalStorage () {
         }
     }
 
-    //Render SL names
-    for (sl in dSLArray) {
-        let el = document.getElementById(`shiftleaderD ${sl}`)
-        if (el !== null) {
-            el.textContent = dSLArray[sl]
-            el.style.color = 'wheat'
-            el.style.textShadow = '1px 2px 5px black'
-        }
-    }
+    //Render SL names + SL cell colors
+    renderSLNamesSLCellColors (dSLArray, 'shiftleaderD', 'D')
+    renderSLNamesSLCellColors (nSLArray, 'shiftleaderN', 'N')
+}
 
-    for (sl in nSLArray) {
-        let el = document.getElementById(`shiftleaderN ${sl}`)
-        if (el !== null) {
-            el.textContent = nSLArray[sl]
+function renderSLNamesSLCellColors (array, gridElement, shift) {
+    for (sl in array) {
+        let el = document.getElementById(`${gridElement} ${sl}`)
+        if (array[sl] !== null) {
+            el.textContent = array[sl]
             el.style.color = 'wheat'
             el.style.textShadow = '1px 2px 5px black'
+
+            for(operator of operatorsArray) {
+                if (array[sl] === operator.realName) {
+                    let slCellElement = document.getElementById(`${operator.name} ${sl}`)
+                    if (slCellElement.textContent === shift) {
+                        slCellElement.style.background = SLcellColor
+                    }
+                }
+            }
         } 
     }
-    //Render SL orange colors in main grid
-
-
 }
 
 renderGridFromLocalStorage()
@@ -125,6 +126,3 @@ function saveSLArray (shift, name, day) {
     }
 
 }
-
-//pre vymazanie pouzit popSLfromSummaryGrid funkciu ktora:
-//najprv zresetuje summary grid a nasledne prida noveho ak to nie je remove

@@ -43,11 +43,15 @@ $(maingridContainer).children().click((event)=>{
                 shiftCellStyle(event, nightShiftBackgroundColor, 'N', 'black')
                 summaryOperatorsCount(clickedIdSplit)
             } else if (vacation) {
+                popSLfromSummaryGrid(event.target)
                 shiftCellStyle(event, vacationBackgroundColor, 'V', white)
+                summaryOperatorsCount(clickedIdSplit)
             } else if (paragraf) {
+                popSLfromSummaryGrid(event.target)
                 shiftCellStyle(event, paragrafColor, 'P', white)
                 summaryOperatorsCount(clickedIdSplit)
             } else if (freeshift) {
+                popSLfromSummaryGrid(event.target)
                 shiftCellStyle(event, freeShiftBackgroundColor, '-', white)
                 summaryOperatorsCount(clickedIdSplit)
             } else if (shiftleader) {
