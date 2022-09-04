@@ -135,15 +135,20 @@ function checkSL (element, shift, column, shiftGrid) {
         x.style.color = 'wheat'
         x.style.textShadow = '1px 2px 5px black'
         x.textContent = operator
+        saveSLArray (event.target.textContent, operator, column)
     }
 }
 
 function popSLfromSummaryGrid (e) {
     if (e.style.background === 'linear-gradient(320deg, rgb(252, 208, 61) 0%, rgb(255, 231, 0) 100%)') {
+        let x = splitId(e)
+        let y = x[2]
         if (e.textContent === 'D') {
             summaryCellUpdate(getElementColumn(e, 'shiftleaderD'), '13px', 'none', white, '-')
+            dSLArray[y] = '-'
         } else if (e.textContent === 'N') {
             summaryCellUpdate(getElementColumn(e, 'shiftleaderN'), '13px', 'none', white, '-')
+            nSLArray[y] = '-'
         }
     }
 }
@@ -153,5 +158,6 @@ function getElementColumn (clickedElement, targetElementId) {
     let column = splitElement[2]
     return document.getElementById(`${targetElementId} ${column}`)
 }
+
 
 //Mozem hodit operatorov do 2 poli pre D a N zmeny a po nacitani vytiahnut data z tamade a vyrenderovat mena SL

@@ -148,7 +148,3 @@ const summaryCellUpdate = (element, size, shadow, color, textcontent) => {
     element.style.color = color
     element.textContent = textcontent
 }
-//SummaryGrid Issues:
-//Po zmene napr. D SL na N mi neaktualizuje ak je niekto iny SL ale da ze je zmena bez SL pricom realne tam je iny SL
-//nemam nastavene ze to loopuje aj po zmene shifty, resp. je to nastavene len na dbl click event
-//event nastavit z DBL clicka na nieco ine pretoze sa prekryvaju

@@ -8,6 +8,25 @@ const holidays = {
     november: [1, 17],
     december: [24, 25, 26]
 }
+
+let dSLArray
+let nSLArray
+
+if (localStorage.getItem('sldJSON') === null) {
+    dSLArray = []
+} else {
+    dSLArray = JSON.parse(localStorage.getItem('sldJSON'))
+}
+console.log(dSLArray)
+
+if (localStorage.getItem('slnJSON') === null) {
+    nSLArray = []
+} else {
+    nSLArray = JSON.parse(localStorage.getItem('slnJSON'))
+}
+console.log(nSLArray)
+
+
 let myJSON
 //Used colors
 const white = 'white'

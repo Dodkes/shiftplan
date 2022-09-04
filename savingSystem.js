@@ -25,7 +25,20 @@ function saveToLocalStorage () {
     myJSON = JSON.stringify(operatorsArray)
     localStorage.setItem('operatorsJSON', myJSON)
     operatorsArray = JSON.parse(localStorage.getItem('operatorsJSON'))
-    console.log(operatorsArray)
+
+    //SL main grid save - TOTO BY MALO FUNGOVAT
+    sldJSON = JSON.stringify(dSLArray)
+    slnJSON = JSON.stringify(nSLArray)
+
+    localStorage.setItem('sldJSON', sldJSON)
+    localStorage.setItem('slnJSON', slnJSON)
+
+    dSLArray = JSON.parse(localStorage.getItem('sldJSON'))
+    nSLArray = JSON.parse(localStorage.getItem('slnJSON'))
+
+    console.log(dSLArray)
+    console.log(nSLArray)
+    
 }
 
 const resetLocalStorage = () => {
@@ -54,6 +67,27 @@ function renderGridFromLocalStorage () {
         }
     }
 
+    //Render SL names
+    for (sl in dSLArray) {
+        let el = document.getElementById(`shiftleaderD ${sl}`)
+        if (el !== null) {
+            el.textContent = dSLArray[sl]
+            el.style.color = 'wheat'
+            el.style.textShadow = '1px 2px 5px black'
+        }
+    }
+
+    for (sl in nSLArray) {
+        let el = document.getElementById(`shiftleaderN ${sl}`)
+        if (el !== null) {
+            el.textContent = nSLArray[sl]
+            el.style.color = 'wheat'
+            el.style.textShadow = '1px 2px 5px black'
+        } 
+    }
+    //Render SL orange colors in main grid
+
+
 }
 
 renderGridFromLocalStorage()
@@ -80,3 +114,17 @@ loadData()
 myArray.forEach(element => {
     summaryOperatorsCount(element)
 });
+
+// Save SL names in summary grid
+function saveSLArray (shift, name, day) {
+    console.log(shift, name, day)
+    if (shift === 'D') {
+        dSLArray[day] = name
+    } else if (shift === 'N') {
+        nSLArray[day] = name
+    }
+
+}
+
+//pre vymazanie pouzit popSLfromSummaryGrid funkciu ktora:
+//najprv zresetuje summary grid a nasledne prida noveho ak to nie je remove
