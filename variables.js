@@ -17,7 +17,6 @@ if (localStorage.getItem('sldJSON') === null) {
 } else {
     dSLArray = JSON.parse(localStorage.getItem('sldJSON'))
 }
-console.log(dSLArray)
 
 if (localStorage.getItem('slnJSON') === null) {
     nSLArray = []
@@ -40,7 +39,7 @@ const sundayColor = 'rgba(209, 206, 226, 0.4)'
 const holidayColor = 'rgba(127, 255, 212, 0.5)'
 const currentDayColor = '#66ccff'
 const shiftLeaderColor = '#666699'
-const SLcellColor = 'linear-gradient(320deg, rgba(252,208,61,1) 0%, rgba(255,231,0,1) 100%)'
+const SLcellColor = 'linear-gradient(320deg, rgb(252, 208, 61) 0%, rgb(255, 231, 0) 100%)'
 
 class NewElement {
     constructor(elType, attributeType, attributeName, content, appendTo) {

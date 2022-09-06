@@ -15,6 +15,8 @@ const saveOperatorArrayData = (operatorId) => {
                 break;
             case '-': currentOperatorArray[i] = '-'
                 break;
+            case 'x': currentOperatorArray[i] = 'x'
+                break;
             default: ;
         }
     }
@@ -35,10 +37,6 @@ function saveToLocalStorage () {
 
     dSLArray = JSON.parse(localStorage.getItem('sldJSON'))
     nSLArray = JSON.parse(localStorage.getItem('slnJSON'))
-
-    console.log(dSLArray)
-    console.log(nSLArray)
-    
 }
 
 const resetLocalStorage = () => {
@@ -61,6 +59,7 @@ function renderGridFromLocalStorage () {
                     break;
                 case 'P' : loadCellData(operator, y, 'P', paragrafColor, white)
                     break;
+                case 'x': loadCellData(operator, y, 'x', freeShiftBackgroundColor, white)
                 default: ;
             }
         }
@@ -118,7 +117,6 @@ myArray.forEach(element => {
 
 // Save SL names in summary grid
 function saveSLArray (shift, name, day) {
-    console.log(shift, name, day)
     if (shift === 'D') {
         dSLArray[day] = name
     } else if (shift === 'N') {

@@ -52,7 +52,7 @@ $(maingridContainer).children().click((event)=>{
                 summaryOperatorsCount(clickedIdSplit)
             } else if (freeshift) {
                 popSLfromSummaryGrid(event.target)
-                shiftCellStyle(event, freeShiftBackgroundColor, '-', white)
+                shiftCellStyle(event, freeShiftBackgroundColor, 'x', white)
                 summaryOperatorsCount(clickedIdSplit)
             } else if (shiftleader) {
                 slCellColor(event.target)
@@ -80,7 +80,7 @@ $(maingridContainer).children().click((event)=>{
             }
         } //Tooltip update + save operators data
         saveOperatorArrayData(clickedIdSplit)
-        document.getElementById(`line ${clickedIdSplit[1]}`).title = updateTooltip(operatorsArray[clickedIdSplit[1]-1].workday)
+        document.getElementById(`line ${clickedIdSplit[1]}`).title = updateTooltip(operatorsArray[clickedIdSplit[1]-1], operatorsArray[clickedIdSplit[1]-1].shiftleader)
         tooltipRender()
     }
 })
@@ -129,6 +129,13 @@ function checkSL (element, shift, column, shiftGrid) {
         for (i = 0; i < operatorsArray.length; i++) {
             let columnCell = document.getElementById(`Operator ${i + 1} ${column}`)
             if (columnCell.textContent === shift) {
+                if (columnCell.style.background == SLcellColor) {
+                    let a = splitId(columnCell)
+                    let b = a[1] - 1
+                    let x = document.getElementById(`line ${a[1]}`)
+                    popSLfromSummaryGrid(columnCell)
+                    x.title = updateTooltip(operatorsArray[b], operatorsArray[b].shiftleader)
+                }
                 columnCell.style.background = dayShiftBackgroundColor
             }
         }
@@ -162,6 +169,3 @@ function getElementColumn (clickedElement, targetElementId) {
     let column = splitElement[2]
     return document.getElementById(`${targetElementId} ${column}`)
 }
-
-
-//Mozem hodit operatorov do 2 poli pre D a N zmeny a po nacitani vytiahnut data z tamade a vyrenderovat mena SL

@@ -7,16 +7,6 @@ const shiftleaderColor = (shiftleader, column) => {
     }
 }
 
-//Left panel operators creation
-for (i = 0; i < operatorsArray.length; i++){
-    let columnOperator = new NewElement('div', 'id', 'line ' + (i + 1), operatorsArray[i].realName, gridContainer)
-    columnOperator.createNewElement()
-    shiftleaderColor(operatorsArray[i].shiftleader, columnOperator.elType)
-    $(columnOperator.elType).attr('data-bs-toggle', 'tooltip')
-    $(columnOperator.elType).attr('data-bs-html', 'true')
-    columnOperator.elType.title = updateTooltip(operatorsArray[i].workday)
-}
-
 //Main Grid creation loop - grid with textContent -
 const mainGrid = () => {
     let dayLoop = 1
@@ -38,6 +28,16 @@ const mainGrid = () => {
 
 mainGrid()
 
+//Left panel operators creation
+for (i = 0; i < operatorsArray.length; i++){
+    let columnOperator = new NewElement('div', 'id', 'line ' + (i + 1), operatorsArray[i].realName, gridContainer)
+    columnOperator.createNewElement()
+    shiftleaderColor(operatorsArray[i].shiftleader, columnOperator.elType)
+    $(columnOperator.elType).attr('data-bs-toggle', 'tooltip')
+    $(columnOperator.elType).attr('data-bs-html', 'true')
+    columnOperator.elType.title = updateTooltip(operatorsArray[i], operatorsArray[i].shiftleader)
+}
+
 //Bootstrap tooltip
 function tooltipRender () {
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
@@ -46,16 +46,20 @@ function tooltipRender () {
     })
 }
 
-function updateTooltip (array) {
-    let [D, N, V, P] = [0, 0, 0, 0]
-    for (count of array) {
+function updateTooltip (object, shiftleader) {
+    let [D, N, V, P, SL] = [0, 0, 0, 0, 0]
+    for (count of object.workday) {
         if (count === 'D') { D++ } 
         else if (count === 'N') { N++ }
         else if (count === 'V') { V++ }
         else if (count === 'P') { P++ }
     }
 
-    return `D - ${D} <br>N - ${N} <br>V - ${V} <br>P - ${P}`
+    for (let i = 1; i <= monthDays; i++) {
+        if (object.realName === dSLArray[i] || object.realName === nSLArray[i]) { SL++ }
+    }
+
+    return shiftleader ? `D - ${D} <br>N - ${N} <br>V - ${V} <br>P - ${P} <br>SL - ${SL}` : `D - ${D} <br>N - ${N} <br>V - ${V} <br>P - ${P}`
 }
 
 tooltipRender ()
