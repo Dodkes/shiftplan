@@ -125,21 +125,15 @@ function summaryOperatorsCount(splitId) {
     let getComputeElementN = document.getElementById('operatorsN ' + splitId[2])
     
 //Summary operators counter + styling RED/GREEN ------------------------------------------------
-    if (dayshiftCount === 0) {
-        summaryCellUpdate(getComputeElementD, '13px', 'none', white, '-')
-    } else if (dayshiftCount > 0 && dayshiftCount < 4) {
-        summaryCellUpdate(getComputeElementD, '20px', '1px 2px 5px black', 'red', dayshiftCount)
-    } else if (dayshiftCount >= 4) {
-        summaryCellUpdate(getComputeElementD, '20px', '1px 2px 5px black', 'lightgreen', dayshiftCount)
-    }
+    if (dayshiftCount === 0) { summaryCellUpdate(getComputeElementD, '13px', 'none', white, '-') } 
+    else if (dayshiftCount > 0 && dayshiftCount < 4) { summaryCellUpdate(getComputeElementD, '20px', '1px 2px 5px black', 'red', dayshiftCount) } 
+    else if (dayshiftCount === 4) { summaryCellUpdate(getComputeElementD, '20px', '1px 2px 5px black', 'yellow', dayshiftCount) } 
+    else if (dayshiftCount >= 5) { summaryCellUpdate(getComputeElementD, '20px', '1px 2px 5px black', 'lightgreen', dayshiftCount) }
 
-    if (nightshiftCount === 0) {
-        summaryCellUpdate(getComputeElementN, '13px', 'none', white, '-')
-    } else if (nightshiftCount > 0 && nightshiftCount < 4) {
-        summaryCellUpdate(getComputeElementN, '20px', '1px 2px 5px black', 'red', nightshiftCount)
-    } else if (nightshiftCount >= 4) {
-        summaryCellUpdate(getComputeElementN, '20px', '1px 2px 5px black', 'lightgreen', nightshiftCount)
-    }
+    if (nightshiftCount === 0) { summaryCellUpdate(getComputeElementN, '13px', 'none', white, '-') } 
+    else if (nightshiftCount > 0 && nightshiftCount < 4) { summaryCellUpdate(getComputeElementN, '20px', '1px 2px 5px black', 'yellow', nightshiftCount) } 
+    else if (nightshiftCount === 4) {summaryCellUpdate(getComputeElementN, '20px', '1px 2px 5px black', 'yellow', nightshiftCount) }
+    else if (nightshiftCount >= 5) {summaryCellUpdate(getComputeElementN, '20px', '1px 2px 5px black', 'lightgreen', nightshiftCount) }
 }
 
 const summaryCellUpdate = (element, size, shadow, color, textcontent) => {

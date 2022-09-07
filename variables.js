@@ -12,19 +12,11 @@ const holidays = {
 let dSLArray
 let nSLArray
 
-if (localStorage.getItem('sldJSON') === null) {
-    dSLArray = []
-} else {
-    dSLArray = JSON.parse(localStorage.getItem('sldJSON'))
-}
+if (localStorage.getItem('sldJSON') === null) { dSLArray = [] } 
+else { dSLArray = JSON.parse(localStorage.getItem('sldJSON')) }
 
-if (localStorage.getItem('slnJSON') === null) {
-    nSLArray = []
-} else {
-    nSLArray = JSON.parse(localStorage.getItem('slnJSON'))
-}
-console.log(nSLArray)
-
+if (localStorage.getItem('slnJSON') === null) { nSLArray = [] } 
+else { nSLArray = JSON.parse(localStorage.getItem('slnJSON')) }
 
 let myJSON
 //Used colors

@@ -7,7 +7,7 @@ const shiftleaderColor = (shiftleader, column) => {
     }
 }
 
-//Main Grid creation loop - grid with textContent -
+//Main Grid creation loop - grid with textContent '-'
 const mainGrid = () => {
     let dayLoop = 1
     let operatorLoop = 0

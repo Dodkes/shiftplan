@@ -130,5 +130,5 @@ if (localStorage.getItem('operatorsJSON') === null) {
     }]
 } else {
     operatorsArray = JSON.parse(localStorage.getItem('operatorsJSON'))
-    console.log('local storage existuje')
+    console.log('local storage exists')
 }
