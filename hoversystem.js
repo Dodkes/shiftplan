@@ -9,9 +9,10 @@ $('div').hover((event)=>{
         leftPanelSelectedId = document.getElementById('line ' + newId[1])
         topPanelDaySelectedId = document.getElementById('topLineDay ' + newId[2])
         topPanelMonthSelectedId = document.getElementById('topLineMonth ' + newId[2])
-        topPanelDaySelectedId.style.color = '#ff6600'
-        leftPanelSelectedId.style.color = '#ff6600'
-        topPanelMonthSelectedId.style.color = '#ff6600'
+        topPanelDaySelectedId.style.color = hoverColor
+        leftPanelSelectedId.style.color = hoverColor
+        topPanelMonthSelectedId.style.color = hoverColor
+
     }
 
 }, ()=>{
