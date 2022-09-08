@@ -20,7 +20,7 @@ else { nSLArray = JSON.parse(localStorage.getItem('slnJSON')) }
 
 let myJSON
 //Used colors
-const hoverColor = '#ff6600'
+const hoverColor = 'red'
 const white = 'white'
 const paragrafColor = 'linear-gradient(to right, #bc4e9c, #f80759)'
 const dayShiftBackgroundColor = 'linear-gradient(to right, #e0eafc, #cfdef3)'

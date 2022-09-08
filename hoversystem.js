@@ -1,6 +1,7 @@
 let leftPanelSelectedId
 let topPanelDaySelectedId
 let topPanelMonthSelectedId
+let a, b, c
 //Hover color columns and row
 $('div').hover((event)=>{
     let selectedId = event.target.id
@@ -9,17 +10,31 @@ $('div').hover((event)=>{
         leftPanelSelectedId = document.getElementById('line ' + newId[1])
         topPanelDaySelectedId = document.getElementById('topLineDay ' + newId[2])
         topPanelMonthSelectedId = document.getElementById('topLineMonth ' + newId[2])
-        topPanelDaySelectedId.style.color = hoverColor
-        leftPanelSelectedId.style.color = hoverColor
-        topPanelMonthSelectedId.style.color = hoverColor
+        
+        if (topPanelDaySelectedId.style.backgroundColor !== hoverColor) {
+            a = topPanelDaySelectedId.style.backgroundColor
+            topPanelDaySelectedId.style.backgroundColor = hoverColor
+        }
 
+        if (topPanelMonthSelectedId.style.backgroundColor !== hoverColor) {
+            b = topPanelMonthSelectedId.style.backgroundColor
+            topPanelMonthSelectedId.style.backgroundColor = hoverColor
+        }
+
+        if (leftPanelSelectedId.style.backgroundColor !== hoverColor) {
+            c = leftPanelSelectedId.style.backgroundColor
+            leftPanelSelectedId.style.backgroundColor = hoverColor
+        }
     }
-
+// SPACE PROBELM - KED KLIKNEM SPACE NA NIECO TAK HOVER COLOR OSTANE
 }, ()=>{
         if (topPanelDaySelectedId){
             topPanelDaySelectedId.style.color = 'white'
             leftPanelSelectedId.style.color = 'white'
             topPanelMonthSelectedId.style.color = 'white'
+            topPanelDaySelectedId.style.backgroundColor = a
+            topPanelMonthSelectedId.style.backgroundColor = b
+            leftPanelSelectedId.style.backgroundColor = c
         }
 
 })
