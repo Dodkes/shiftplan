@@ -10,7 +10,6 @@ h1{
 }
 
 body{
-   background: linear-gradient(to right, #a8c0ff, #3f2b96); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
    background: linear-gradient(to right, #0f0c29, #302b63, #24243e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
    color: white;
    text-shadow: 1px 1px 1px black;
@@ -28,7 +27,7 @@ body{
 }
 
 ::selection{
-   background-color: transparent;
+   background-color: rebeccapurple;
 }
 
 #currentMonth{
@@ -56,7 +55,7 @@ div{
    box-shadow: 1px 1px 50px black;
 }
 
-div > div:hover{
+.mainGrid > div:hover, .operators-grid-container > div:hover {
    cursor: pointer;
    background: linear-gradient(to right, #d3cce3, #e9e4f0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
    background-color: white;
@@ -69,12 +68,12 @@ div > div:hover{
 
 .controlPanel {
    border-top: 2px solid black;
-   background: linear-gradient(to bottom, #4e54c8, #8f94fb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
    padding: 1vw;
    position: absolute;
    bottom: 0;
    left: 0;
    width: 100%;
+   background-color: rgba(255, 255, 255, 0.1);
 }
 
 .controlPanel > button {
@@ -82,8 +81,9 @@ div > div:hover{
    border: 2px solid black;
    border-radius: 5px;
    cursor: pointer;
-   box-shadow: 1px 4px 5px black;
+   box-shadow: 5px 5px 10px 2px black;
    font-weight: bold;
+   font-size: 0.8vw;
 }
 
 #dayshift, #nightshift {
@@ -114,21 +114,21 @@ div > div:hover{
 .summaryGridContainer{
   display: grid;
   text-align: center;
-  box-shadow: 0px 1px 10px black;
   position: relative;
-  margin-top: 3em;
-}
-
-.summaryLeftPanel{
-   margin-top: 3em;
-   width: 6em;
-   float: left;
-   box-shadow: 0px 1px 10px black;
 }
 
 .summaryLeftPanel > div {
-   height: 30px;
-   font-size: 0.75em;
+   height: 1.8vw;
+   font-size: 0.68vw;
+   padding: 0 8px 0 8px;
+   font-weight: bold;
+}
+
+.sumGrid {
+   height: 1.8vw;
+   font-size: 0.68vw;
+   max-width: 70px;
+   width: 3.1vw;
 }
 
 .dayShiftSummary {
@@ -141,19 +141,6 @@ div > div:hover{
    background-color: #3d3d5c;
    color: white;
    text-shadow: 1px 1px 5px black;
-}
-
-.summaryLeftPanel > div {
-   padding: 0 5px 0 5px;
-   font-weight: bold;
-}
-
-.sumGrid {
-   height: 30px;
-   font-size: 0.68vw;
-   max-height: 38px;
-   max-width: 70px;
-   width: 3.1vw;
 }
 
 #remove { 
@@ -171,3 +158,61 @@ div > div:hover{
 .tooltip{
   border: none;
 }
+
+.summaryContainer {
+   width: 100vw;
+   margin-top: 2vw;
+   box-shadow: 0px 5px 50px black;
+   border: none;
+}
+
+footer, #shiftplan-title {
+   display: none;
+}
+
+/* MEDIA QUERY */
+
+@media only screen and (max-width: 1500px) {
+   .controlPanel > button, #remove, #shiftleader {
+      font-size: 1.2vw;
+   }
+ }
+
+@media only screen and (max-width: 1100px) {
+   .mainGrid, .operators-grid-container, .summaryLeftPanel {
+      font-size: 1vw;
+   }
+   .controlPanel > button, #shiftleader, #remove {
+      display: block;
+      margin: 0;
+      font-size: 1.45vw;
+      width: 100%;
+   }
+   .controlPanel {
+      background: none;
+   }
+ }
+
+ @media only screen and (max-width: 900px) {
+   .controlPanel > button, #remove, #shiftleader {
+      font-size: 2.2vw;
+   }
+ }
+
+ @media only screen and (max-width: 800px) {
+   .controlPanel > button, #remove, #shiftleader {
+      font-size: 2.6vw;
+   }
+ }
+
+ @media only screen and (max-width: 700px) {
+   .controlPanel > button, #remove, #shiftleader {
+      font-size: 3.5vw;
+   }
+ }
+
+ @media only screen and (max-width: 600px) {
+   .controlPanel > button, #remove, #shiftleader {
+      font-size: 5vw;
+   }
+ }

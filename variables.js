@@ -52,3 +52,5 @@ class NewElement {
 const splitId = (element) => {
     return element.id.split(' ')
 }
+
+$('footer, #shiftplan-title, .mainGrid').slideDown(500);
