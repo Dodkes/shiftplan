@@ -30,7 +30,7 @@ const freeShiftBackgroundColor = vacationBackgroundColor
 const saturdayColor = 'rgba(209, 206, 226, 0.2)'
 const sundayColor = 'rgba(209, 206, 226, 0.4)'
 const holidayColor = 'rgba(127, 255, 212, 0.5)'
-const currentDayColor = '#66ccff'
+const currentDayColor = '#99ccff'
 const shiftLeaderColor = '#666699'
 const SLcellColor = 'linear-gradient(320deg, rgb(252, 208, 61) 0%, rgb(255, 231, 0) 100%)'
 
@@ -53,5 +53,7 @@ class NewElement {
 const splitId = (element) => {
     return element.id.split(' ')
 }
-
-$('footer, #shiftplan-title, .mainGrid').slideDown(500);
+//Onload animation
+$(document).ready(()=> {
+    $('footer, #shiftplan-title, .mainGrid').slideDown(500);
+})

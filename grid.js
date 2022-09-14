@@ -2,9 +2,7 @@ const gridContainer = document.querySelector('.operators-grid-container')
 
 //Shift leader styling
 const shiftleaderColor = (shiftleader, column) => {
-    if (shiftleader == true){
-        column.style.backgroundColor = shiftLeaderColor
-    }
+    if (shiftleader) column.style.backgroundColor = shiftLeaderColor
 }
 
 //Main Grid creation loop - grid with textContent '-'
@@ -49,14 +47,14 @@ function tooltipRender () {
 function updateTooltip (object, shiftleader) {
     let [D, N, V, P, SL] = [0, 0, 0, 0, 0]
     for (count of object.workday) {
-        if (count === 'D') { D++ } 
-        else if (count === 'N') { N++ }
-        else if (count === 'V') { V++ }
-        else if (count === 'P') { P++ }
+        if (count === 'D') D++ 
+        else if (count === 'N') N++
+        else if (count === 'V') V++
+        else if (count === 'P') P++
     }
 
     for (let i = 1; i <= monthDays; i++) {
-        if (object.realName === dSLArray[i] || object.realName === nSLArray[i]) { SL++ }
+        if (object.realName === dSLArray[i] || object.realName === nSLArray[i]) SL++
     }
 
     return shiftleader ? `D - ${D} <br>N - ${N} <br>V - ${V} <br>P - ${P} <br>SL - ${SL}` : `D - ${D} <br>N - ${N} <br>V - ${V} <br>P - ${P}`

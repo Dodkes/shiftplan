@@ -11,7 +11,7 @@ const firstDayOfTheMonth = new Date(new Date().getFullYear(), getNextMonth, 1)
 const firstDay = firstDayOfTheMonth.getDay()
 console.log('First day of NEXT month is ' + weekDays[firstDay])
 
-if (getNextMonth == 12) { getNextMonth = 0 } //if its december, shiftplan generated for january next year
+if (getNextMonth == 12) getNextMonth = 0 //if its december, shiftplan generated for january next year
 
 let dayLoop = firstDay
 
@@ -50,13 +50,9 @@ switch (currentMonth){
             weekDayElement.createNewElement()
             let splitNewElementId = splitId(weekDayElement.elType)
             dayLoop === 6 ? dayLoop = 0 : dayLoop++
-            if (dayLoop === 1) {
-                sundayArray.push(splitNewElementId[1])
-            }
-
-            if (dayLoop === 0) {
-                saturdayArray.push(splitNewElementId[1])
-            }
+            
+            if (dayLoop === 1) sundayArray.push(splitNewElementId[1])
+            if (dayLoop === 0) saturdayArray.push(splitNewElementId[1])
         }
     }
 

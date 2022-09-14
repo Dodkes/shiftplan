@@ -111,8 +111,7 @@ function summaryRecountSL(id) {
 }
 //Looping through columns if there is D or N as text content-----------------------------------
 function summaryOperatorsCount(splitId) {
-    let dayshiftCount = 0
-    let nightshiftCount = 0
+    let [dayshiftCount, nightshiftCount] = [0, 0]
     for (i = 1; i <= operatorsArray.length; i++) {
         let columnLoop = document.getElementById('Operator ' + i + ' ' + splitId[2])
         if (columnLoop.textContent === 'D') {
@@ -131,7 +130,7 @@ function summaryOperatorsCount(splitId) {
     else if (dayshiftCount >= 5) { summaryCellUpdate(getComputeElementD, '1.2vw', '1px 2px 5px black', 'lightgreen', dayshiftCount) }
 
     if (nightshiftCount === 0) { summaryCellUpdate(getComputeElementN, '13px', 'none', white, '-') } 
-    else if (nightshiftCount > 0 && nightshiftCount < 4) { summaryCellUpdate(getComputeElementN, '1.2vw', '1px 2px 5px black', 'yellow', nightshiftCount) } 
+    else if (nightshiftCount > 0 && nightshiftCount < 4) { summaryCellUpdate(getComputeElementN, '1.2vw', '1px 2px 5px black', 'red', nightshiftCount) } 
     else if (nightshiftCount === 4) {summaryCellUpdate(getComputeElementN, '1.2vw', '1px 2px 5px black', 'yellow', nightshiftCount) }
     else if (nightshiftCount >= 5) {summaryCellUpdate(getComputeElementN, '1.2vw', '1px 2px 5px black', 'lightgreen', nightshiftCount) }
 }

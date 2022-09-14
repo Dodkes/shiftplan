@@ -170,7 +170,7 @@ footer, #shiftplan-title {
    display: none;
 }
 
-/* MEDIA QUERY */
+/* MEDIA QUERY - WIDTH*/
 
 @media only screen and (max-width: 1500px) {
    .controlPanel > button, #remove, #shiftleader {
@@ -214,5 +214,15 @@ footer, #shiftplan-title {
  @media only screen and (max-width: 600px) {
    .controlPanel > button, #remove, #shiftleader {
       font-size: 5vw;
+   }
+   div {
+      border: none;
+   }
+ }
+
+ /* MEDIA QUERY - HEIGHT */
+ @media only screen and (max-height: 850px) {
+   footer {
+      visibility: hidden;
    }
  }
