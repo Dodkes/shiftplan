@@ -1,228 +1,247 @@
 *{
-   margin: 0;
-   box-sizing: border-box;
-   padding: 0;
-   color: white;
-}
-
-h1{
-   font-family: 'Lato', sans-serif;
-}
-
-body{
-   background: linear-gradient(to right, #0f0c29, #302b63, #24243e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-   color: white;
-   text-shadow: 1px 1px 1px black;
-   font-family: 'Fira Sans', sans-serif;
-}
-
-#title{
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    color: white;
+ }
+ 
+ h1{
+    font-family: 'Lato', sans-serif;
+ }
+ 
+ body{
+    background: linear-gradient(to right, #0f0c29, #302b63, #24243e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    text-shadow: 1px 1px 1px black;
+    font-family: 'Fira Sans', sans-serif;
+ }
+ 
+ #title{
+     width: 100%;
+     background: linear-gradient(to right, #4e54c8, #8f94fb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+ }
+ 
+ #shiftplan-title{
+    text-align: center;
+    text-shadow: 2px 2px 2px black;
+ }
+ 
+ ::selection{
+    background-color: rebeccapurple;
+ }
+ 
+ #currentMonth{
+    color: aqua;
+    text-shadow: 2px 2px 2px black;
+ }
+ 
+ .operators-grid-container, .summaryLeftPanel{
+    display: grid;
+    float: left;
+ }
+ 
+ .tableCorner{
+    background-color: lightskyblue;
+    text-align: center;
+ }
+ 
+ div{
+    border: 1px solid black;
+ }
+ 
+ .mainGrid{
+    display: grid;
+    text-align: center;
+    box-shadow: 1px 1px 50px black;
+ }
+ 
+ .mainGrid > div:hover, .operators-grid-container > div:hover {
+    cursor: pointer;
+    background: linear-gradient(to right, #d3cce3, #e9e4f0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-color: white;
+    opacity: 0.5;
+ }
+ 
+ .operators-grid-container > div {
+    padding: 0 5px 0 5px;
+ }
+ 
+ .controlPanel {
+    border-top: 2px solid black;
+    padding: 1vw;
+    position: absolute;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    background: linear-gradient(to right, #4e54c8, #8f94fb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-
-#shiftplan-title{
-   text-align: center;
-   text-shadow: 2px 2px 2px black;
-}
-
-::selection{
-   background-color: rebeccapurple;
-}
-
-#currentMonth{
-   color: aqua;
-   text-shadow: 2px 2px 2px black;
-}
-
-.operators-grid-container, .summaryLeftPanel{
-   display: grid;
-   float: left;
-}
-
-.tableCorner{
-   background-color: lightskyblue;
-   text-align: center;
-}
-
-div{
-   border: 1px solid black;
-}
-
-.mainGrid{
-   display: grid;
-   text-align: center;
-   box-shadow: 1px 1px 50px black;
-}
-
-.mainGrid > div:hover, .operators-grid-container > div:hover {
-   cursor: pointer;
-   background: linear-gradient(to right, #d3cce3, #e9e4f0); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-   background-color: white;
-   opacity: 0.5;
-}
-
-.operators-grid-container > div {
-   padding: 0 5px 0 5px;
-}
-
-.controlPanel {
-   border-top: 2px solid black;
-   padding: 1vw;
-   position: absolute;
-   bottom: 0;
-   left: 0;
-   width: 100%;
-   background-color: rgba(255, 255, 255, 0.1);
-}
-
-.controlPanel > button {
-   padding: 0.5vw;
-   border: 2px solid black;
-   border-radius: 5px;
-   cursor: pointer;
-   box-shadow: 5px 5px 10px 2px black;
-   font-weight: bold;
-   font-size: 0.8vw;
-}
-
-#dayshift, #nightshift {
-   background: linear-gradient(to right, #e0eafc, #cfdef3);
-   color:#0f0c29;
-   text-shadow: 1px 2px 5px grey;
-}
-
-#vacation, #freeshift {
-   color: white;
-   text-shadow: 2px 2px 2px black;
-   background-color: #696969;
-}
-
-#shiftleader {
-  color: black;
-  text-shadow: 1px 2px 5px grey;
-  background: linear-gradient(320deg, rgba(252,208,61,1) 0%, rgba(255,231,0,1) 100%);
-  margin: 0 0 0 3vw;
-}
-
-#paragraf {
-   background: linear-gradient(to right, #bc4e9c, #f80759);
-  text-shadow: 1px 2px 5px grey;
-   color: #0f0c29;
-}
-
-.summaryGridContainer{
-  display: grid;
-  text-align: center;
-  position: relative;
-}
-
-.summaryLeftPanel > div {
-   height: 1.8vw;
-   font-size: 0.68vw;
-   padding: 0 8px 0 8px;
-   font-weight: bold;
-}
-
-.sumGrid {
-   height: 1.8vw;
-   font-size: 0.68vw;
-   max-width: 70px;
-   width: 3.1vw;
-}
-
-.dayShiftSummary {
-   background-color: #9494b8;
-   text-shadow: none;
+    background-color: rgba(255, 255, 255, 0.1);
+ }
+ 
+ .controlPanel > button {
+    padding: 0.5vw;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 5px 5px 10px 2px black;
+    font-weight: bold;
+    font-size: 0.8vw;
+ }
+ 
+ #dayshift, #nightshift {
+    background: linear-gradient(to right, #e0eafc, #cfdef3);
+    color:#0f0c29;
+    text-shadow: 1px 2px 5px grey;
+ }
+ 
+ #vacation, #freeshift {
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    background-color: #696969;
+ }
+ 
+ #shiftleader {
    color: black;
+   text-shadow: 1px 2px 5px grey;
+   background: linear-gradient(320deg, rgba(252,208,61,1) 0%, rgba(255,231,0,1) 100%);
+   margin: 0 0 0 3vw;
+ }
+ 
+ #paragraf {
+    background: linear-gradient(to right, #bc4e9c, #f80759);
+   text-shadow: 1px 2px 5px grey;
+    color: #0f0c29;
+ }
+ 
+#mobile-work {
+    background-color: lightgreen;
+    color: black;
 }
 
-.nightShiftSummary {
-   background-color: #3d3d5c;
+#in-office, #mobile, #shiftplan-button{
+    display: none;
+    color: black;
+}
+
+#mobile {
+    background-color: lightgreen;
+}
+
+ .summaryGridContainer{
+   display: grid;
+   text-align: center;
+   position: relative;
+ }
+ 
+ .summaryLeftPanel > div {
+    height: 1.8vw;
+    font-size: 0.68vw;
+    padding: 0 8px 0 8px;
+    font-weight: bold;
+ }
+ 
+ .sumGrid {
+    height: 1.8vw;
+    font-size: 0.68vw;
+    max-width: 70px;
+    width: 3.1vw;
+ }
+ 
+#shortcut{
+    color: #ff9933;
+    text-shadow: 1px 1px 1px black;
+}
+
+ .dayShiftSummary {
+    background-color: #9494b8;
+    text-shadow: none;
+    color: black;
+ }
+ 
+ .nightShiftSummary {
+    background-color: #3d3d5c;
+    color: white;
+    text-shadow: 1px 1px 5px black;
+ }
+ 
+ #remove, #shiftplan-button { 
+   float: right;
+   width: 20vw;
+   color: #0f0c29;
+ }
+ 
+ #reset {
+   background-color: #fc3d3d;
    color: white;
-   text-shadow: 1px 1px 5px black;
-}
-
-#remove { 
-  float: right;
-  width: 20vw;
-  color: #0f0c29;
-}
-
-#reset {
-  background-color: #fc3d3d;
-  color: white;
-  text-shadow: 1px 2px 2px black;
-}
-
-.tooltip{
-  border: none;
-}
-
-.summaryContainer {
-   width: 100vw;
-   margin-top: 2vw;
-   box-shadow: 0px 5px 50px black;
+   text-shadow: 1px 2px 2px black;
+ }
+ 
+ .tooltip{
    border: none;
-}
-
-footer, #shiftplan-title {
-   display: none;
-}
-
-/* MEDIA QUERY - WIDTH*/
-
-@media only screen and (max-width: 1500px) {
-   .controlPanel > button, #remove, #shiftleader {
-      font-size: 1.2vw;
-   }
  }
-
-@media only screen and (max-width: 1100px) {
-   .mainGrid, .operators-grid-container, .summaryLeftPanel {
-      font-size: 1vw;
-   }
-   .controlPanel > button, #shiftleader, #remove {
-      display: block;
-      margin: 0;
-      font-size: 1.45vw;
-      width: 100%;
-   }
-   .controlPanel {
-      background: none;
-   }
+ 
+ .summaryContainer {
+    width: 100vw;
+    margin-top: 2vw;
+    box-shadow: 0px 5px 50px black;
+    border: none;
  }
-
- @media only screen and (max-width: 900px) {
-   .controlPanel > button, #remove, #shiftleader {
-      font-size: 2.2vw;
-   }
+ 
+ footer, #shiftplan-title {
+    display: none;
  }
-
- @media only screen and (max-width: 800px) {
-   .controlPanel > button, #remove, #shiftleader {
-      font-size: 2.6vw;
-   }
- }
-
- @media only screen and (max-width: 700px) {
-   .controlPanel > button, #remove, #shiftleader {
-      font-size: 3.5vw;
-   }
- }
-
- @media only screen and (max-width: 600px) {
-   .controlPanel > button, #remove, #shiftleader {
-      font-size: 5vw;
-   }
-   div {
-      border: none;
-   }
- }
-
- /* MEDIA QUERY - HEIGHT */
- @media only screen and (max-height: 850px) {
-   footer {
-      visibility: hidden;
-   }
- }
+ 
+ /* MEDIA QUERY - WIDTH*/
+ 
+ @media only screen and (max-width: 1500px) {
+    .controlPanel > button, #remove, #shiftleader {
+       font-size: 1.2vw;
+    }
+  }
+ 
+ @media only screen and (max-width: 1100px) {
+    .mainGrid, .operators-grid-container, .summaryLeftPanel {
+       font-size: 1vw;
+    }
+    .controlPanel > button, #shiftleader, #remove {
+       display: block;
+       margin: 0;
+       font-size: 1.45vw;
+       width: 100%;
+    }
+    .controlPanel {
+       background: none;
+    }
+  }
+ 
+  @media only screen and (max-width: 900px) {
+    .controlPanel > button, #remove, #shiftleader {
+       font-size: 2.2vw;
+    }
+  }
+ 
+  @media only screen and (max-width: 800px) {
+    .controlPanel > button, #remove, #shiftleader {
+       font-size: 2.6vw;
+    }
+  }
+ 
+  @media only screen and (max-width: 700px) {
+    .controlPanel > button, #remove, #shiftleader {
+       font-size: 3.5vw;
+    }
+  }
+ 
+  @media only screen and (max-width: 600px) {
+    .controlPanel > button, #remove, #shiftleader {
+       font-size: 5vw;
+    }
+    div {
+       border: none;
+    }
+  }
+ 
+  /* MEDIA QUERY - HEIGHT */
+  @media only screen and (max-height: 850px) {
+    footer {
+       visibility: hidden;
+    }
+  }

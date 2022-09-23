@@ -19,6 +19,7 @@ if (localStorage.getItem('slnJSON') === null) { nSLArray = [] }
 else { nSLArray = JSON.parse(localStorage.getItem('slnJSON')) }
 
 let myJSON
+let shiftPlanSwitch = true
 //Used colors
 const hoverColor = 'red'
 const white = 'white'
@@ -33,6 +34,7 @@ const holidayColor = 'rgba(127, 255, 212, 0.5)'
 const currentDayColor = '#99ccff'
 const shiftLeaderColor = '#666699'
 const SLcellColor = 'linear-gradient(320deg, rgb(252, 208, 61) 0%, rgb(255, 231, 0) 100%)'
+const mobileWorkCellColor = 'rgba(0, 204, 102, 1)'
 
 class NewElement {
     constructor(elType, attributeType, attributeName, content, appendTo) {

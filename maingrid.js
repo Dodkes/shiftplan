@@ -5,26 +5,29 @@ let [dayshift, nightshift, vacation, paragraf, freeshift, remove, shiftleader] =
 function controlPanelReset(id) {
     [dayshift, nightshift, vacation, paragraf, freeshift, remove, shiftleader] = falseArray
     $('.controlPanel').children().css({'outline' : 'none' })
-        document.getElementById(id).style.outline = '3px solid #00e673'
+        if (id) document.getElementById(id).style.outline = '3px solid #00e673'
 }
 
 function setup(id) {
-    controlPanelReset(id)
-    switch (id) {
-        case 'dayshift': dayshift = true
-            break;
-        case 'nightshift': nightshift = true
-            break;
-        case 'vacation': vacation = true
-            break;
-        case 'paragraf': paragraf = true
-            break;
-        case 'freeshift': freeshift = true
-            break;
-        case 'remove': remove = true
-            break;
-        case 'shiftleader': shiftleader = true
-            default:;
+    if (shiftPlanSwitch) {
+        controlPanelReset(id)
+        switch (id) {
+            case 'dayshift': dayshift = true
+                break;
+            case 'nightshift': nightshift = true
+                break;
+            case 'vacation': vacation = true
+                break;
+            case 'paragraf': paragraf = true
+                break;
+            case 'freeshift': freeshift = true
+                break;
+            case 'remove': remove = true
+                break;
+            case 'shiftleader': shiftleader = true
+                break;
+                default:;
+        }
     }
 }
 
@@ -56,6 +59,9 @@ $(maingridContainer).children().click((event)=>{
                 summaryOperatorsCount(clickedIdSplit)
             } else if (shiftleader) {
                 slCellColor(event.target)
+//Mobile work -----------------------------------------------
+            } else if (mobileWork || inOffice) {
+                setShift(event.target)
 //RESETING CELL FROM HERE------------------------------------
             } else if (remove) {
                 popSLfromSummaryGrid(event.target)
@@ -86,7 +92,7 @@ $(maingridContainer).children().click((event)=>{
 })
 
 //Keyboard Control Panel
-document.addEventListener('keydown',(event)=>{
+document.addEventListener('keydown', (event) => {
     switch(event.key){
         case 'd': setup('dayshift')
             break;

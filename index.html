@@ -19,6 +19,7 @@
     <script src="hoversystem.js" defer></script>
     <script src="summaryGrid.js" defer></script>
     <script src="savingSystem.js" defer></script>
+    <script src="mobile-work.js" defer></script>
 </head>
 <body>
     <div id="title">
@@ -43,14 +44,18 @@
     </div>
     
     <footer class="controlPanel">
-        <button id="dayshift" onclick="setup(this.id)">Dayshift - D</button>
-        <button id="nightshift" onclick="setup(this.id)">Nightshift - N</button>
-        <button id="vacation" onclick="setup(this.id)">Vacation - V</button>
-        <button id="paragraf" onclick="setup(this.id)">Paragraf - P</button>
-        <button id="freeshift" onclick="setup(this.id)">Free shift - F</button>
-        <button id="shiftleader" onclick="setup(this.id)">Shift Leader - S</button>
-        <button id="remove" onclick="setup(this.id)">Remove - SPACE</button>
+        <button id="dayshift" onclick="setup(this.id)">Dayshift - <span id="shortcut">D</span></button>
+        <button id="nightshift" onclick="setup(this.id)">Nightshift - <span id="shortcut">N</span></button>
+        <button id="vacation" onclick="setup(this.id)">Vacation - <span id="shortcut">V</span></button>
+        <button id="paragraf" onclick="setup(this.id)">Paragraf - <span id="shortcut">P</span></button>
+        <button id="freeshift" onclick="setup(this.id)">Free shift - <span id="shortcut">F</span></button>
+        <button id="shiftleader" onclick="setup(this.id)">Shift Leader - <span id="shortcut">S</span></button>
+        <button id="remove" onclick="setup(this.id)">Remove - <span id="shortcut">SPACE</span></button>
         <button id="reset" onclick="resetLocalStorage()">Reset shiftplan</button>
+        <button id="mobile-work">Mobile work plan</button>
+        <button id="in-office">In the office - <span id="shortcut">O</span></button>
+        <button id="mobile">Mobile work - <span id="shortcut">M</span></button>
+        <button id="shiftplan-button">Shiftplan</button>
     </footer>
 </body>
 </html>
