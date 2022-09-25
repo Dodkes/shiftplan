@@ -65,11 +65,11 @@ function renderGridFromLocalStorage () {
         }
     }
 
-    //Render SL names + SL cell colors
     renderSLNamesSLCellColors (dSLArray, 'shiftleaderD', 'D')
     renderSLNamesSLCellColors (nSLArray, 'shiftleaderN', 'N')
 }
 
+//Render SL names in summary grid + SL cell colors
 function renderSLNamesSLCellColors (array, gridElement, shift) {
     for (sl in array) {
         let el = document.getElementById(`${gridElement} ${sl}`)
@@ -122,5 +122,4 @@ function saveSLArray (shift, name, day) {
     } else if (shift === 'N') {
         nSLArray[day] = name
     }
-
 }

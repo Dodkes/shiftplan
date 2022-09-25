@@ -2,6 +2,7 @@ const mobileWorkPlanButton = document.getElementById('mobile-work')
 const shiftPlanButton = document.getElementById('shiftplan-button')
 const mobileWorkButton = document.getElementById('mobile')
 const inOfficeButton = document.getElementById('in-office')
+const spTitle = document.getElementById('shiftplan-title')
 let [inOffice, mobileWork] = [false, false]
 const fadeSpeed = 200
 mobileWorkPlanButton.addEventListener('click', () => {
@@ -25,6 +26,10 @@ mobileWorkPlanButton.addEventListener('click', () => {
             }
         }
         ['dayshift', 'nightshift', 'vacation', 'paragraf', 'freeshift', 'shiftleader', 'remove', 'reset', 'mobile-work'].forEach(hideButtons)
+
+        spTitle.style.color = '#1aff66'
+        spTitle.textContent = 'Mobile work - '
+        document.getElementById('currentMonth').textContent = currentMonth
     
         showButtons('mobile')
         showButtons('in-office')
@@ -37,7 +42,16 @@ mobileWorkPlanButton.addEventListener('click', () => {
 })
 
 const blankCell = (cell) => {
-    if (cell.textContent === 'D' || cell.textContent === 'N') cell.style.background = dayShiftBackgroundColor
+    //if (cell.textContent === 'D' || cell.textContent === 'N') cell.style.background = dayShiftBackgroundColor
+    if (cell.textContent === 'D' || cell.textContent === 'N') {
+        let operator = splitId(cell)[1] - 1
+        let day = splitId(cell)[2]
+        if (operatorsArray[operator].mobileWorkDay[day] === true) {
+            cell.style.background = mobileWorkCellColor
+        } else {
+            cell.style.background = dayShiftBackgroundColor
+        }
+    }
 }
 
 const hideButtons = (button) => {
@@ -60,6 +74,11 @@ shiftPlanButton.addEventListener('click', () => {
         hideButtons('in-office')
         hideButtons('shiftplan-button')
         renderGridFromLocalStorage()
+
+        spTitle.style.color = 'white'
+        spTitle.textContent = 'Shiftplan - '
+        document.getElementById('currentMonth').textContent = currentMonth
+
     }, fadeSpeed)
 
     $('.mainGrid').fadeIn(fadeSpeed)
@@ -95,12 +114,13 @@ function resetButtons () {
 }
 
 const setShift = (e) => {
-    console.log(e)
     if (e.textContent === 'D' || e.textContent === 'N'){
         if (mobileWork) {
             e.style.background = mobileWorkCellColor
+            saveMobileWork(e, true)
         } else if (inOffice) {
             e.style.background = dayShiftBackgroundColor
+            saveMobileWork(e, null)
         }
     }
 }
@@ -111,6 +131,12 @@ function MWSet (mobile, office, button) {
         mobileWork = mobile
         inOffice = office
         button.style.outline = '3px solid #00e673'
-
     }
+}
+
+function saveMobileWork (e, shift) {
+    let operator = operatorsArray[Number(splitId(e)[1] - 1)]
+    let index = Number(splitId(e)[2])
+    operator.mobileWorkDay[index] = shift
+    console.log(operator.mobileWorkDay)
 }

@@ -17,12 +17,20 @@
  }
  
  #title{
-     width: 100%;
+     display: none;
      background: linear-gradient(to right, #4e54c8, #8f94fb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
  }
  
- #shiftplan-title{
-    text-align: center;
+#title-container{
+   text-align: center;
+}
+
+#shiftplan-title{
+   color: white;
+}
+
+ #shiftplan-title, #currentMonth{
+    display: inline;
     text-shadow: 2px 2px 2px black;
  }
  
@@ -32,7 +40,6 @@
  
  #currentMonth{
     color: aqua;
-    text-shadow: 2px 2px 2px black;
  }
  
  .operators-grid-container, .summaryLeftPanel{
@@ -155,7 +162,7 @@
     text-shadow: none;
     color: black;
  }
- 
+
  .nightShiftSummary {
     background-color: #3d3d5c;
     color: white;
@@ -185,7 +192,7 @@
     border: none;
  }
  
- footer, #shiftplan-title {
+ footer {
     display: none;
  }
  

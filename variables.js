@@ -57,5 +57,5 @@ const splitId = (element) => {
 }
 //Onload animation
 $(document).ready(()=> {
-    $('footer, #shiftplan-title, .mainGrid').slideDown(500);
+    $('footer, .mainGrid, #title').slideDown(500);
 })
