@@ -141,3 +141,25 @@ const summaryCellUpdate = (element, size, shadow, color, textcontent) => {
     element.style.color = color
     element.textContent = textcontent
 }
+
+//Resize summary grid on page resize
+function updateWidth (element) {
+    document.querySelector("body > div.summaryContainer > div.summaryLeftPanel").style.width = document.querySelector("#line\\ 1").offsetWidth + 'px'
+    document.querySelector(`#operatorsD\\ ${element}`).style.width = document.querySelector(`#Operator\\ 1\\ ${element}`).offsetWidth + 'px'
+    document.querySelector(`#shiftleaderD\\ ${element}`).style.width = document.querySelector(`#Operator\\ 1\\ ${element}`).offsetWidth + 'px'
+    document.querySelector(`#operatorsN\\ ${element}`).style.width = document.querySelector(`#Operator\\ 1\\ ${element}`).offsetWidth + 'px'
+    document.querySelector(`#shiftleaderN\\ ${element}`).style.width = document.querySelector(`#Operator\\ 1\\ ${element}`).offsetWidth + 'px'
+}
+
+
+function resizeWidth () {
+    for (i = 1; i <= monthDays; i++) {
+        updateWidth(i)
+    }
+}
+
+resizeWidth()
+
+window.addEventListener('resize', ()=> {
+    resizeWidth()
+})

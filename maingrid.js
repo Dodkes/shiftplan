@@ -150,6 +150,7 @@ function checkSL (element, shift, column, shiftGrid) {
         let operator = operatorsArray[clickedOperator - 1]. realName
         let x = document.getElementById(`${shiftGrid} ${column}`)
         x.style.color = 'wheat'
+        x.style.fontSize = '0.6vw'
         x.style.textShadow = '1px 2px 5px black'
         x.textContent = operator
         saveSLArray (event.target.textContent, operator, column)

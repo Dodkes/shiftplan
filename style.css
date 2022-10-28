@@ -140,15 +140,13 @@
  
  .summaryLeftPanel > div {
     height: 1.8vw;
-    font-size: 0.68vw;
+    font-size: 0.6vw;
     padding: 0 8px 0 8px;
-    font-weight: bold;
  }
  
  .sumGrid {
     height: 1.8vw;
-    font-size: 0.68vw;
-    max-width: 70px;
+    font-size: 0.6vw;
     width: 3.1vw;
  }
  
