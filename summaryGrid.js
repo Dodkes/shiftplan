@@ -50,65 +50,6 @@ if (getNextMonth === 0 ||
     getNextMonth === 11){
         styleSummaryTable(currentHolidayMonth, holidayColor)
 }
-
-//Summary info setup - function is called from maingrid.js on click event
-//this function textcontent shiftleader realname
-function summaryFunction(splitId, shift) {
-    splitId[1]
-    let selectedOperator = splitId[1] - 1
-
-    let dayCell = document.getElementById('shiftleaderD ' + splitId[2])
-    let nightCell = document.getElementById('shiftleaderN ' + splitId[2])
-    
-
-    if (operatorsArray[selectedOperator].shiftleader === true && shift === 'D') {
-        dayCell.textContent = operatorsArray[selectedOperator].realName
-        $(dayCell).addClass('summaryCellStyleDayshift')
-        if (operatorsArray[selectedOperator].realName === nightCell.textContent) {
-            nightCell.textContent = '-'
-        }
-    }
-    if (operatorsArray[selectedOperator].shiftleader && shift === 'N') {
-        nightCell.textContent = operatorsArray[selectedOperator].realName
-        $(nightCell).addClass('summaryCellStyleNightshift')
-        if (operatorsArray[selectedOperator].realName === dayCell.textContent) {
-            dayCell.textContent = '-'
-        }
-    }
-    summaryOperatorsCount(splitId)
-}
-//On REMOVE event reset cell and get another SL
-function summaryRecountSL(id) {
-    let index = id[1] - 1
-    let index2 = id[2]
-    let slID = document.getElementById('shiftleaderD ' + index2)
-    let slIDN = document.getElementById('shiftleaderN ' + index2)
-    if (operatorsArray[index].realName === slID.textContent) {
-        slID.textContent = '-'
-    } else if (operatorsArray[index].realName === slIDN.textContent) {
-        slIDN.textContent = '-'
-    }
-//if clicked on SL, get another SL and put in summary cell
-    if (operatorsArray[index].shiftleader === true){
-        for (i = 1; i <= operatorsArray.length; i++) {
-            let columnLoop = document.getElementById('Operator ' + i + ' ' + id[2])
-            if (slID.textContent === '-') {
-                if (columnLoop.textContent === 'D') {
-                    if (operatorsArray[i-1].shiftleader === true) {
-                        slID.textContent = operatorsArray[i-1].realName
-                    }
-                }
-            }
-            if (slIDN.textContent === '-') {
-                if (columnLoop.textContent === 'N') {
-                    if (operatorsArray[i-1].shiftleader === true) {
-                        slIDN.textContent = operatorsArray[i-1].realName
-                    }
-                }
-            }
-        }
-    }
-}
 //Looping through columns if there is D or N as text content-----------------------------------
 function summaryOperatorsCount(splitId) {
     let [dayshiftCount, nightshiftCount] = [0, 0]
@@ -124,12 +65,12 @@ function summaryOperatorsCount(splitId) {
     let getComputeElementN = document.getElementById('operatorsN ' + splitId[2])
     
 //Summary operators counter + styling RED/GREEN ------------------------------------------------
-    if (dayshiftCount === 0) { summaryCellUpdate(getComputeElementD, '13px', 'none', white, '-') } 
+    if (dayshiftCount === 0) { summaryCellUpdate(getComputeElementD, '0.5vw', 'none', white, '-') } 
     else if (dayshiftCount > 0 && dayshiftCount < 4) { summaryCellUpdate(getComputeElementD, '1.2vw', '1px 2px 5px black', 'red', dayshiftCount) } 
     else if (dayshiftCount === 4) { summaryCellUpdate(getComputeElementD, '1.2vw', '1px 2px 5px black', 'yellow', dayshiftCount) } 
     else if (dayshiftCount >= 5) { summaryCellUpdate(getComputeElementD, '1.2vw', '1px 2px 5px black', 'lightgreen', dayshiftCount) }
 
-    if (nightshiftCount === 0) { summaryCellUpdate(getComputeElementN, '13px', 'none', white, '-') } 
+    if (nightshiftCount === 0) { summaryCellUpdate(getComputeElementN, '0.5vw', 'none', white, '-') } 
     else if (nightshiftCount > 0 && nightshiftCount < 4) { summaryCellUpdate(getComputeElementN, '1.2vw', '1px 2px 5px black', 'red', nightshiftCount) } 
     else if (nightshiftCount === 4) {summaryCellUpdate(getComputeElementN, '1.2vw', '1px 2px 5px black', 'yellow', nightshiftCount) }
     else if (nightshiftCount >= 5) {summaryCellUpdate(getComputeElementN, '1.2vw', '1px 2px 5px black', 'lightgreen', nightshiftCount) }

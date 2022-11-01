@@ -162,10 +162,10 @@ function popSLfromSummaryGrid (e) {
         let x = splitId(e)
         let y = x[2]
         if (e.textContent === 'D') {
-            summaryCellUpdate(getElementColumn(e, 'shiftleaderD'), '13px', 'none', white, '-')
+            summaryCellUpdate(getElementColumn(e, 'shiftleaderD'), '0.5vw', 'none', white, '-')
             dSLArray[y] = '-'
         } else if (e.textContent === 'N') {
-            summaryCellUpdate(getElementColumn(e, 'shiftleaderN'), '13px', 'none', white, '-')
+            summaryCellUpdate(getElementColumn(e, 'shiftleaderN'), '0.5vw', 'none', white, '-')
             nSLArray[y] = '-'
         }
     }
