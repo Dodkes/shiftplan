@@ -5,7 +5,7 @@ let [dayshift, nightshift, vacation, paragraf, freeshift, remove, shiftleader] =
 function controlPanelReset(id) {
     [dayshift, nightshift, vacation, paragraf, freeshift, remove, shiftleader] = falseArray
     $('.controlPanel').children().css({'outline' : 'none' })
-        if (id) document.getElementById(id).style.outline = '3px solid #00e673'
+        if (id) document.getElementById(id).style.outline = '0.2em solid #00e673'
 }
 
 function setup(id) {
@@ -118,6 +118,12 @@ function shiftCellStyle(event, color, shift, textColor, id) {
     getId.style.background = color
     getId.textContent = shift
     getId.style.color = textColor
+
+    if (shift === 'D' || shift === 'N') {
+        getId.style.fontWeight = 'bold'
+    } else {
+        getId.style.fontWeight = '100'
+    }
 }
 
 function slCellColor (element) {

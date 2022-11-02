@@ -12,8 +12,8 @@
  body{
     background: linear-gradient(to right, #0f0c29, #302b63, #24243e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     color: white;
-    text-shadow: 1px 0px 1px black;
     font-family: 'Fira Sans', sans-serif;
+    overflow-x: hidden;
  }
  
  #title{
@@ -47,6 +47,7 @@
  .operators-grid-container, .summaryLeftPanel{
     display: grid;
     float: left;
+    border: none;
  }
  
  .tableCorner{
@@ -56,16 +57,18 @@
  
  div{
     border: 1px solid black;
+    font-size: 0.8vw;
  }
  
  .mainGrid{
     display: grid;
     text-align: center;
     box-shadow: 1px 1px 50px black;
+    border: none;
  }
  
  .mainGrid > div, .operators-grid-container > div, .summaryLeftPanel {
-   font-size: 0.8vw;
+   font-size: 0.75vw;
 }
 
  .mainGrid > div:hover, .operators-grid-container > div:hover {
@@ -79,10 +82,14 @@
     padding: 0 5px 0 5px;
  }
  
+footer {
+   display: none;
+}
+
  .controlPanel {
-    border-top: 2px solid black;
-    padding: 1vw;
-    position: absolute;
+    border-top: 0.1vw solid black;
+    padding: 0.5vw;
+    position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
@@ -90,13 +97,14 @@
  }
  
  .controlPanel > button {
+    top: 50% ;
+    left: 50%;
     padding: 0.5vw;
-    border: 2px solid black;
-    border-radius: 5px;
+    border-radius: 0.4em;
     cursor: pointer;
-    box-shadow: 5px 5px 10px 2px black;
     font-weight: bold;
     font-size: 0.8vw;
+    box-shadow: 0.1vw 0.1vw 0.3vw black;
  }
  
  #dayshift, #nightshift {
@@ -119,19 +127,18 @@
  }
  
  #paragraf {
-    background: linear-gradient(to right, #bc4e9c, #f80759);
-   text-shadow: 1px 2px 5px grey;
     color: #0f0c29;
+    background: linear-gradient(to right, #bc4e9c, #f80759);
+    text-shadow: 1px 2px 5px grey;
  }
- 
-#mobile-work {
-    background-color: lightgreen;
-    color: black;
-}
 
 #in-office, #mobile, #shiftplan-button{
     display: none;
     color: black;
+}
+
+#mobile-work {
+   background-color: lightgreen;
 }
 
 #mobile {
@@ -142,6 +149,7 @@
    display: grid;
    text-align: center;
    position: relative;
+   border: none;
  }
 
  .summaryLeftPanel > div {
@@ -173,12 +181,16 @@
     text-shadow: 1px 1px 5px black;
  }
  
- #remove, #shiftplan-button { 
+ #mobile-work, #shiftplan-button { 
    float: right;
    width: 20vw;
    color: #0f0c29;
  }
  
+#remove {
+   color: black;
+}
+
  #reset {
    background-color: #fc3d3d;
    color: white;
@@ -195,14 +207,10 @@
     box-shadow: 0px 5px 50px black;
     border: none;
  }
- 
- footer {
-    display: none;
- }
- 
+
  /* MEDIA QUERY - WIDTH*/
  
- @media only screen and (max-width: 1500px) {
+ /* @media only screen and (max-width: 1500px) {
     .controlPanel > button, #remove, #shiftleader {
        font-size: 1.2vw;
     }
@@ -250,9 +258,9 @@
     }
   }
  
-  /* MEDIA QUERY - HEIGHT */
-  @media only screen and (max-height: 850px) {
+  MEDIA QUERY - HEIGHT */
+  /* @media only screen and (max-height: 850px) {
     footer {
        visibility: hidden;
     }
-  }
+  } */

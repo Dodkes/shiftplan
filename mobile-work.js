@@ -130,7 +130,7 @@ function MWSet (mobile, office, button) {
         resetButtons()
         mobileWork = mobile
         inOffice = office
-        button.style.outline = '3px solid #00e673'
+        button.style.outline = '0.2em solid #00e673'
     }
 }
 

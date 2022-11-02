@@ -50,7 +50,6 @@ switch (currentMonth){
             weekDayElement.createNewElement()
             let splitNewElementId = splitId(weekDayElement.elType)
             dayLoop === 6 ? dayLoop = 0 : dayLoop++
-            
             if (dayLoop === 1) sundayArray.push(splitNewElementId[1])
             if (dayLoop === 0) saturdayArray.push(splitNewElementId[1])
         }
