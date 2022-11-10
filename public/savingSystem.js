@@ -1,21 +1,21 @@
 //Function pushes selected shift into operators workday array index
 const saveOperatorArrayData = (operatorId) => {
-    let currentOperatorArray = operatorsArray[operatorId[1] - 1].workday
-
+    let operatorWorkdayArray = operatorsArray[operatorId[1] - 1].workday
+    
     for (let i = 1; i <= monthDays; i++) {
         let lineUnit = document.getElementById('Operator ' + operatorId[1] + ' ' + i)
         switch (lineUnit.textContent) {
-            case 'D': currentOperatorArray[i] = 'D'
+            case 'D': operatorWorkdayArray[i] = 'D'
                 break;
-            case 'N' : currentOperatorArray[i] = 'N'
+            case 'N' : operatorWorkdayArray[i] = 'N'
                 break;
-            case 'V' : currentOperatorArray[i] = 'V'
+            case 'V' : operatorWorkdayArray[i] = 'V'
                 break;
-            case 'P' : currentOperatorArray[i] = 'P'
+            case 'P' : operatorWorkdayArray[i] = 'P'
                 break;
-            case '-': currentOperatorArray[i] = '-'
+            case '-': operatorWorkdayArray[i] = '-'
                 break;
-            case 'x': currentOperatorArray[i] = 'x'
+            case 'x': operatorWorkdayArray[i] = 'x'
                 break;
             default: ;
         }
@@ -45,8 +45,10 @@ const resetLocalStorage = () => {
 }
 
 function renderGridFromLocalStorage () {
-    data = JSON.parse(localStorage.getItem('operatorsJSON')) //TU BUDU DATA ZO SERVERA, TEDA FETCH
-    
+    data = JSON.parse(localStorage.getItem('operatorsJSON')) //TU POSLAT DATA ZO SERVERA data = 
+    console.log(data)
+
+
     for (x of operatorsArray) {
         let operator = x.name
         for (y in x.workday) {
@@ -124,15 +126,4 @@ function saveSLArray (shift, name, day) {
     }
 }
 
-
-//SAVING DATA TO SERVER
-setInterval(saveToServer, 60000)
-
-function saveToServer () {
-    fetch('/api', {method: 'POST', headers: { 'Content-Type' : 'application/json'}, body: JSON.stringify(operatorsArray)})
-    console.log('%c Data saved: ' + new Date(), 'background: black; color: #bada55; border: 1px solid #bada55')
-}
-
-
-//VSETKO CO TREBA ZMENIT Z LOCAL NA SERVER BY MALO BYT V TOMTO SCRIPTE
-//napr. saveOperatorArrayData funkciu prerobit na server atd
+//vo variables.js je este local storage

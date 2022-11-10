@@ -49,6 +49,8 @@ if (getNextMonth === 0 ||
     getNextMonth === 10 ||
     getNextMonth === 11){
         styleSummaryTable(currentHolidayMonth, holidayColor)
+        stylingWeekends(currentHolidayMonth, holidayColor)
+
 }
 //Looping through columns if there is D or N as text content-----------------------------------
 function summaryOperatorsCount(splitId) {
@@ -91,7 +93,6 @@ function updateWidth (element) {
     document.querySelector(`#operatorsN\\ ${element}`).style.width = document.querySelector(`#Operator\\ 1\\ ${element}`).offsetWidth + 'px'
     document.querySelector(`#shiftleaderN\\ ${element}`).style.width = document.querySelector(`#Operator\\ 1\\ ${element}`).offsetWidth + 'px'
 }
-
 
 function resizeWidth () {
     for (i = 1; i <= monthDays; i++) {

@@ -1,5 +1,18 @@
 let operatorsArray
 
+//SERVER DATA ACCESS - API
+function postApiToServer () {
+    fetch('/api', {method: 'POST', headers: { 'Content-Type' : 'application/json'}, body: JSON.stringify(operatorsArray)})
+    console.log('%c Data saved: ' + new Date(), 'background: black; color: #bada55; border: 1px solid #bada55')
+}
+
+function getApiFromServer () {
+    fetch('/api')
+    .then((res)=> res.text())
+    .then((data)=> operatorsArray = JSON.parse(data))
+    console.log('Data get from server')
+}
+
 if (localStorage.getItem('operatorsJSON') === null) {
     operatorsArray = 
     [operator1 = {
@@ -149,6 +162,7 @@ if (localStorage.getItem('operatorsJSON') === null) {
         workday: [],
         mobileWorkDay: []
     }]
+
 } else {
     operatorsArray = JSON.parse(localStorage.getItem('operatorsJSON'))
     console.log('local storage exists')

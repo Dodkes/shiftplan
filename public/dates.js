@@ -9,7 +9,6 @@ let gridColumns = ''
 const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
 const firstDayOfTheMonth = new Date(new Date().getFullYear(), getNextMonth, 1)
 const firstDay = firstDayOfTheMonth.getDay()
-console.log('First day of NEXT month is ' + weekDays[firstDay])
 
 if (getNextMonth == 12) getNextMonth = 0 //if its december, shiftplan generated for january next year
 

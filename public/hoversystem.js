@@ -88,16 +88,6 @@ switch (getNextMonth){
     case 11: currentHolidayMonth = holidays.december
         break;
 }
-if (getNextMonth === 0 ||
-    getNextMonth === 4 || 
-    getNextMonth === 6 ||
-    getNextMonth === 7 ||
-    getNextMonth === 8 ||
-    getNextMonth === 10 ||
-    getNextMonth === 11)
-{ //styling holidays using stylingWeekends function
-        stylingWeekends(currentHolidayMonth, holidayColor)
-}
 
 function stylingWeekends(myarray, color) {
     for (x in myarray) {

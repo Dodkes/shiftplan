@@ -25,7 +25,7 @@ const mainGrid = () => {
 }
 
 mainGrid()
-
+    
 //Left panel operators creation
 for (i = 0; i < operatorsArray.length; i++){
     let columnOperator = new NewElement('div', 'id', 'line ' + (i + 1), operatorsArray[i].realName, gridContainer)
