@@ -1,8 +1,9 @@
-let operatorsArray
 
 //SERVER DATA ACCESS - API
 function postApiToServer () {
     fetch('/api', {method: 'POST', headers: { 'Content-Type' : 'application/json'}, body: JSON.stringify(operatorsArray)})
+    fetch('/dslarray', {method: 'POST', headers: { 'Content-Type' : 'application/json'}, body: JSON.stringify(dSLArray)})
+    fetch('/nslarray', {method: 'POST', headers: { 'Content-Type' : 'application/json'}, body: JSON.stringify(nSLArray)})
     console.log('%c Data saved: ' + new Date(), 'background: black; color: #bada55; border: 1px solid #bada55')
 }
 
@@ -10,11 +11,19 @@ function getApiFromServer () {
     fetch('/api')
     .then((res)=> res.text())
     .then((data)=> operatorsArray = JSON.parse(data))
-    console.log('Data get from server')
+
+    fetch('dslarray')
+    .then((res)=> res.text())
+    .then((data)=> dSLArray = JSON.parse(data))
+
+    fetch('nslarray')
+    .then((res)=> res.text())
+    .then((data)=> nSLArray = JSON.parse(data))
+    .then(renderMainGrid)
+    .then(sumGridCounterUpdate)
 }
 
-if (localStorage.getItem('operatorsJSON') === null) {
-    operatorsArray = 
+let operatorsArray = 
     [operator1 = {
         name: 'Operator 1',
         realName: 'A. Miroslav',
@@ -161,9 +170,12 @@ if (localStorage.getItem('operatorsJSON') === null) {
         shiftleader: false,
         workday: [],
         mobileWorkDay: []
-    }]
-
-} else {
-    operatorsArray = JSON.parse(localStorage.getItem('operatorsJSON'))
-    console.log('local storage exists')
-}
+    },
+    operator22 = {
+        name: 'Operator 22',
+        realName: 'S. Barbara',
+        shiftleader: false,
+        workday: [],
+        mobileWorkDay: []
+    }
+]

@@ -41,6 +41,7 @@ $(maingridContainer).children().click((event)=>{
                 popSLfromSummaryGrid (event.target)
                 shiftCellStyle(event, dayShiftBackgroundColor, 'D', 'black')
                 summaryOperatorsCount(clickedIdSplit)
+                console.log('je to ' + clickedIdSplit)
             } else if (nightshift) {
                 popSLfromSummaryGrid(event.target)
                 shiftCellStyle(event, nightShiftBackgroundColor, 'N', 'black')

@@ -1,4 +1,4 @@
-//Function pushes selected shift into operators workday array index
+//Function that updates operatorsArray workdays
 const saveOperatorArrayData = (operatorId) => {
     let operatorWorkdayArray = operatorsArray[operatorId[1] - 1].workday
     
@@ -20,23 +20,6 @@ const saveOperatorArrayData = (operatorId) => {
             default: ;
         }
     }
-    saveToLocalStorage()
-}
-
-function saveToLocalStorage () {
-    myJSON = JSON.stringify(operatorsArray)
-    localStorage.setItem('operatorsJSON', myJSON)
-    operatorsArray = JSON.parse(localStorage.getItem('operatorsJSON'))
-
-    //SL main grid save - TOTO BY MALO FUNGOVAT
-    sldJSON = JSON.stringify(dSLArray)
-    slnJSON = JSON.stringify(nSLArray)
-
-    localStorage.setItem('sldJSON', sldJSON)
-    localStorage.setItem('slnJSON', slnJSON)
-
-    dSLArray = JSON.parse(localStorage.getItem('sldJSON'))
-    nSLArray = JSON.parse(localStorage.getItem('slnJSON'))
 }
 
 const resetLocalStorage = () => {
@@ -44,10 +27,8 @@ const resetLocalStorage = () => {
     location.reload()
 }
 
-function renderGridFromLocalStorage () {
-    data = JSON.parse(localStorage.getItem('operatorsJSON')) //TU POSLAT DATA ZO SERVERA data = 
-    console.log(data)
-
+function renderMainGrid () {
+    data = operatorsArray
 
     for (x of operatorsArray) {
         let operator = x.name
@@ -92,7 +73,7 @@ function renderSLNamesSLCellColors (array, gridElement, shift) {
     }
 }
 
-renderGridFromLocalStorage()
+renderMainGrid()
 
 function loadCellData (halfId, day, shift, color, textColor) {
     let cellId = document.getElementById(halfId + ' ' + day)
@@ -102,20 +83,24 @@ function loadCellData (halfId, day, shift, color, textColor) {
 
 
 // Reload summaryGrid according to mainGrid data loaded from local storage
-var myArray = []
-function loadData () {
-    for (i = 1; i <= monthDays; i++) {
-        let a = document.getElementById('Operator 1 ' + i)
-        let b = splitId(a)
-        myArray.push(b)
+function sumGridCounterUpdate() {
+    var myArray = []
+    function loadData () {
+        for (i = 1; i <= monthDays; i++) {
+            let a = document.getElementById('Operator 1 ' + i)
+            let b = splitId(a)
+            myArray.push(b)
+        }
     }
+    
+    loadData()
+    
+    myArray.forEach(element => {
+        summaryOperatorsCount(element)
+    });
 }
 
-loadData()
-
-myArray.forEach(element => {
-    summaryOperatorsCount(element)
-});
+sumGridCounterUpdate()
 
 // Save SL names in summary grid
 function saveSLArray (shift, name, day) {

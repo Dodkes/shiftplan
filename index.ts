@@ -24,6 +24,9 @@ app.get('/', (req, res) => {
 })
 
 //Post routuje HTTP POST request
+
+
+// REQUEST MAIN API
 app.post('/api', (req, res) => {
     fs.writeFile('data.db', JSON.stringify(req.body), (err) => {
         if (err) throw err
@@ -35,4 +38,33 @@ app.get('/api', (req, res) => { //na localhost:3000/api mam ulozene toto API
         if (err) return console.log(err)
         res.send(data)
     })
+})
+
+// REQUEST DAY SHIFTLEADER ARRAY
+app.post('/dslarray', (req, res) => {
+    fs.writeFile('data2.db', JSON.stringify(req.body), (err) => {
+        if (err) throw err
+    })
+})
+
+app.get('/dslarray', (req, res) => {
+    fs.readFile('data2.db', 'utf8', (err, data) => {
+    if (err) return console.log(err)
+    res.send(data)
+})
+})
+
+// REQUEST NIGHT SHIFTLEADER ARRAY
+
+app.post('/nslarray', (req, res) => {
+    fs.writeFile('data3.db', JSON.stringify(req.body), (err) => {
+        if (err) throw err
+    })
+})
+
+app.get('/nslarray', (req, res) => {
+    fs.readFile('data3.db', 'utf8', (err, data) => {
+    if (err) return console.log(err)
+    res.send(data)
+})
 })

@@ -72,7 +72,7 @@ shiftPlanButton.addEventListener('click', () => {
         hideButtons('mobile')
         hideButtons('in-office')
         hideButtons('shiftplan-button')
-        renderGridFromLocalStorage()
+        renderMainGrid()
 
         spTitle.style.color = 'white'
         spTitle.textContent = 'Shiftplan - '
