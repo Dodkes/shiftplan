@@ -9,15 +9,8 @@ const holidays = {
     december: [24, 25, 26]
 }
 
-let dSLArray
-let nSLArray
-
-if (localStorage.getItem('sldJSON') === null) { dSLArray = [] } 
-else { dSLArray = JSON.parse(localStorage.getItem('sldJSON')) }
-
-if (localStorage.getItem('slnJSON') === null) { nSLArray = [] } 
-else { nSLArray = JSON.parse(localStorage.getItem('slnJSON')) }
-
+let dSLArray = []
+let nSLArray = []
 let myJSON
 let shiftPlanSwitch = true
 //Used colors
@@ -58,4 +51,6 @@ const splitId = (element) => {
 //Onload animation
 $(document).ready(()=> {
     $('footer, .mainGrid, #title').slideDown(500);
+    getApiFromServer()
+    console.log(operatorsArray)
 })

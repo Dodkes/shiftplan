@@ -25,7 +25,7 @@ mobileWorkPlanButton.addEventListener('click', () => {
                 dayLoop++
             }
         }
-        ['dayshift', 'nightshift', 'vacation', 'paragraf', 'freeshift', 'shiftleader', 'remove', 'reset', 'mobile-work'].forEach(hideButtons)
+        ['dayshift', 'nightshift', 'vacation', 'paragraf', 'freeshift', 'shiftleader', 'remove', 'reset', 'mobile-work', 'save'].forEach(hideButtons)
 
         spTitle.style.color = '#1aff66'
         spTitle.textContent = 'Mobile work - '
@@ -68,7 +68,7 @@ shiftPlanButton.addEventListener('click', () => {
     $('.controlPanel').slideUp(fadeSpeed)
     
     setTimeout(() => {
-        ['dayshift', 'nightshift', 'vacation', 'paragraf', 'freeshift', 'shiftleader', 'remove', 'reset', 'mobile-work'].forEach(showButtons)
+        ['dayshift', 'nightshift', 'vacation', 'paragraf', 'freeshift', 'shiftleader', 'remove', 'reset', 'mobile-work', 'save'].forEach(showButtons)
         hideButtons('mobile')
         hideButtons('in-office')
         hideButtons('shiftplan-button')

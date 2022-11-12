@@ -191,12 +191,29 @@ footer {
    color: black;
 }
 
+#save {
+   background-color: aquamarine;
+   color: black;
+}
+
+#save:hover {
+   background-color: black;
+   color: aquamarine;
+   transition: 200ms;
+}
+
  #reset {
    background-color: #fc3d3d;
    color: white;
    text-shadow: 1px 2px 2px black;
  }
  
+#reset:hover {
+   background-color: black;
+   color: #fc3d3d;
+   transition: 200ms;
+}
+
  .tooltip{
    border: none;
  }
