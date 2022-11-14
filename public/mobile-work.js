@@ -137,5 +137,4 @@ function saveMobileWork (e, shift) {
     let operator = operatorsArray[Number(splitId(e)[1] - 1)]
     let index = Number(splitId(e)[2])
     operator.mobileWorkDay[index] = shift
-    console.log(operator.mobileWorkDay)
 }

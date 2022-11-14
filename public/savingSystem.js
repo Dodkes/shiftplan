@@ -22,7 +22,7 @@ const saveOperatorArrayData = (operatorId) => {
     }
 }
 
-const resetLocalStorage = () => {
+const resetSP = () => {
     localStorage.clear()
     location.reload()
 }
@@ -81,7 +81,6 @@ function loadCellData (halfId, day, shift, color, textColor) {
     shiftCellStyle(null, color, shift, textColor, cellId)
 }
 
-
 // Reload summaryGrid according to mainGrid data loaded from local storage
 function sumGridCounterUpdate() {
     var myArray = []
@@ -110,5 +109,3 @@ function saveSLArray (shift, name, day) {
         nSLArray[day] = name
     }
 }
-
-//vo variables.js je este local storage

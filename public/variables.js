@@ -14,7 +14,7 @@ let nSLArray = []
 let myJSON
 let shiftPlanSwitch = true
 //Used colors
-const hoverColor = 'red'
+const hoverColor = 'lightcoral'
 const white = 'white'
 const paragrafColor = 'linear-gradient(to right, #bc4e9c, #f80759)'
 const dayShiftBackgroundColor = 'linear-gradient(to right, #e0eafc, #cfdef3)'
