@@ -71,11 +71,11 @@
    font-size: 0.75vw;
 }
 
- .mainGrid > div:hover, .operators-grid-container > div:hover {
-    cursor: pointer;
-    border: 1px solid lightcoral;
+ .mainGrid > div:hover, .operators-grid-container > div:hover{
+   cursor: pointer;
+   border: 1px solid red;
  }
- 
+
  .operators-grid-container > div {
     padding: 0 5px 0 5px;
  }

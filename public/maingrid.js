@@ -67,7 +67,7 @@ $(maingridContainer).children().click((event)=>{
             } else if (remove) {
                 popSLfromSummaryGrid(event.target)
                 saveMobileWork(event.target, null)
-                shiftCellStyle(event, 'rgba(255,255,255,0)', '-', white)
+                shiftCellStyle(event, 'rgba(255,255,255, 0)', '-', white)
                 summaryOperatorsCount(clickedIdSplit)
 //if founds weekend/holiday resets to respective color
             for (x of saturdayArray) {

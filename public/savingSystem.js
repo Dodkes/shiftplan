@@ -23,8 +23,13 @@ const saveOperatorArrayData = (operatorId) => {
 }
 
 const resetSP = () => {
-    localStorage.clear()
-    location.reload()
+    if (confirm('CONFIRM SHIFTPLAN RESET')) {
+        resetOperatorsArray()
+        dSLArray = []
+        nSLArray = []
+        postApiToServer()
+        location.reload()
+    } 
 }
 
 function renderMainGrid () {

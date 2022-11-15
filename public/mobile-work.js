@@ -5,6 +5,7 @@ const inOfficeButton = document.getElementById('in-office')
 const spTitle = document.getElementById('shiftplan-title')
 let [inOffice, mobileWork] = [false, false]
 const fadeSpeed = 200
+//MW plan switch button
 mobileWorkPlanButton.addEventListener('click', () => {
     shiftPlanSwitch = false
     controlPanelReset(null)
@@ -60,7 +61,7 @@ const hideButtons = (button) => {
 const showButtons = (cell) => {
     document.getElementById(cell).style.display = 'inline-block'
 }
-
+//SP switch button
 shiftPlanButton.addEventListener('click', () => {
     shiftPlanSwitch = true
     resetButtons()
@@ -132,7 +133,7 @@ function MWSet (mobile, office, button) {
         button.style.outline = '0.2em solid #00e673'
     }
 }
-
+//save to operators array
 function saveMobileWork (e, shift) {
     let operator = operatorsArray[Number(splitId(e)[1] - 1)]
     let index = Number(splitId(e)[2])

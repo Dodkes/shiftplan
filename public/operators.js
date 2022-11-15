@@ -23,8 +23,14 @@ function getApiFromServer () {
     .then(sumGridCounterUpdate)
 }
 
-let operatorsArray = 
-    [operator1 = {
+let operatorsArray
+resetOperatorsArray()
+
+function resetOperatorsArray () {
+
+operatorsArray = 
+    [
+        operator1 = {
         name: 'Operator 1',
         realName: 'A. Miroslav',
         shiftleader: false,
@@ -177,5 +183,6 @@ let operatorsArray =
         shiftleader: false,
         workday: [],
         mobileWorkDay: []
-    }
-]
+    }]
+
+}
