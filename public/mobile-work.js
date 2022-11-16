@@ -4,6 +4,8 @@ const mobileWorkButton = document.getElementById('mobile')
 const inOfficeButton = document.getElementById('in-office')
 const spTitle = document.getElementById('shiftplan-title')
 let [inOffice, mobileWork] = [false, false]
+let buttons = ['dayshift', 'nightshift', 'vacation', 'paragraf', 'freeshift', 'shiftleader', 'remove', 'reset', 'mobile-work', 'save']
+
 const fadeSpeed = 200
 //MW plan switch button
 mobileWorkPlanButton.addEventListener('click', () => {
@@ -13,20 +15,8 @@ mobileWorkPlanButton.addEventListener('click', () => {
     $('.controlPanel').slideUp(fadeSpeed)
 
     setTimeout(() => {
-        let dayLoop = 1
-        let operatorLoop = 0
-        for (i = 0; i < monthDays * operatorsArray.length; i++){
-            if (dayLoop <= monthDays) {
-                blankCell(document.getElementById(operatorsArray[operatorLoop].name + ' ' + dayLoop))
-                dayLoop++
-            } else {
-                dayLoop = 1
-                operatorLoop++
-                blankCell(document.getElementById(operatorsArray[operatorLoop].name + ' ' + dayLoop))
-                dayLoop++
-            }
-        }
-        ['dayshift', 'nightshift', 'vacation', 'paragraf', 'freeshift', 'shiftleader', 'remove', 'reset', 'mobile-work', 'save'].forEach(hideButtons)
+        renderMobileWorkGrid()
+        buttons.forEach(hideButtons)
 
         spTitle.style.color = '#1aff66'
         spTitle.textContent = 'Mobile work - '
@@ -41,6 +31,23 @@ mobileWorkPlanButton.addEventListener('click', () => {
     $('.controlPanel').slideDown(fadeSpeed)
 
 })
+
+function renderMobileWorkGrid () {
+    let dayLoop = 1
+    let operatorLoop = 0
+    for (i = 0; i < monthDays * operatorsArray.length; i++){
+        if (dayLoop <= monthDays) {
+            blankCell(document.getElementById(operatorsArray[operatorLoop].name + ' ' + dayLoop))
+            dayLoop++
+        } else {
+            dayLoop = 1
+            operatorLoop++
+            blankCell(document.getElementById(operatorsArray[operatorLoop].name + ' ' + dayLoop))
+            dayLoop++
+        }
+    }
+}
+
 
 const blankCell = (cell) => {
     if (cell.textContent === 'D' || cell.textContent === 'N') {
@@ -69,7 +76,7 @@ shiftPlanButton.addEventListener('click', () => {
     $('.controlPanel').slideUp(fadeSpeed)
     
     setTimeout(() => {
-        ['dayshift', 'nightshift', 'vacation', 'paragraf', 'freeshift', 'shiftleader', 'remove', 'reset', 'mobile-work', 'save'].forEach(showButtons)
+        buttons.forEach(showButtons)
         hideButtons('mobile')
         hideButtons('in-office')
         hideButtons('shiftplan-button')
@@ -133,9 +140,27 @@ function MWSet (mobile, office, button) {
         button.style.outline = '0.2em solid #00e673'
     }
 }
-//save to operators array
+
+//SAVE MW TO ARRAY AND RENDER MW ACCORDING THE SERVER DATA
 function saveMobileWork (e, shift) {
+    fetch('/api')
+    .then((res)=> res.text())
+    .then((data)=> operatorsArray = JSON.parse(data))
+    .then (()=> {
+        let operator = operatorsArray[Number(splitId(e)[1] - 1)]
+        let index = Number(splitId(e)[2])
+        operator.mobileWorkDay[index] = shift
+    })
+    .then(renderMobileWorkGrid)
+    .then(postMWToServer)
+}
+
+function removeMobileWorkOnRemoveButton (e, shift) {
     let operator = operatorsArray[Number(splitId(e)[1] - 1)]
     let index = Number(splitId(e)[2])
     operator.mobileWorkDay[index] = shift
+}
+
+function postMWToServer () {
+    fetch('/api', {method: 'POST', headers: { 'Content-Type' : 'application/json'}, body: JSON.stringify(operatorsArray)})
 }
