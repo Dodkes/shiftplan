@@ -27,6 +27,7 @@ const mainGrid = () => {
 mainGrid()
     
 //Left panel operators creation
+
 for (i = 0; i < operatorsArray.length; i++){
     let columnOperator = new NewElement('div', 'id', 'line ' + (i + 1), operatorsArray[i].realName, gridContainer)
     columnOperator.createNewElement()
@@ -34,6 +35,15 @@ for (i = 0; i < operatorsArray.length; i++){
     $(columnOperator.elType).attr('data-bs-toggle', 'tooltip')
     $(columnOperator.elType).attr('data-bs-html', 'true')
     columnOperator.elType.title = updateTooltip(operatorsArray[i], operatorsArray[i].shiftleader)
+}
+
+//SPRAVIT CYKLUS NA TOOLTIP
+function firstTooltipRender () {
+    for (x in operatorsArray) {
+        let xToNumber = Number(x) + 1
+        document.getElementById(`line ${xToNumber}`).title = updateTooltip(operatorsArray[x], operatorsArray[x].shiftleader)
+    }
+    tooltipRender ()
 }
 
 //Bootstrap tooltip

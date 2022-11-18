@@ -21,6 +21,7 @@ function getApiFromServer () {
     .then((data)=> nSLArray = JSON.parse(data))
     .then(renderMainGrid)
     .then(sumGridCounterUpdate)
+    .then(firstTooltipRender)
 }
 
 let operatorsArray

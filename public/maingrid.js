@@ -86,7 +86,7 @@ $(maingridContainer).children().click((event)=>{
                 }
             }
             }
-        } //Tooltip update + save operators data
+        } //Tooltip update + save operators data on click event
         saveOperatorArrayData(clickedIdSplit)
         document.getElementById(`line ${clickedIdSplit[1]}`).title = updateTooltip(operatorsArray[clickedIdSplit[1]-1], operatorsArray[clickedIdSplit[1]-1].shiftleader)
         tooltipRender()
