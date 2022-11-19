@@ -30,6 +30,7 @@ app.get('/', (req, res) => {
 app.post('/api', (req, res) => {
     fs.writeFile('data.db', JSON.stringify(req.body), (err) => {
         if (err) throw err
+        res.end() // res.end() is mandatory to stop request ! otherwise its gonna stay in pending status
     })
 })
 
@@ -44,6 +45,7 @@ app.get('/api', (req, res) => { //na localhost:3000/api mam ulozene toto API
 app.post('/dslarray', (req, res) => {
     fs.writeFile('data2.db', JSON.stringify(req.body), (err) => {
         if (err) throw err
+        res.end() // res.end() is mandatory to stop request ! otherwise its gonna stay in pending status
     })
 })
 
@@ -59,6 +61,7 @@ app.get('/dslarray', (req, res) => {
 app.post('/nslarray', (req, res) => {
     fs.writeFile('data3.db', JSON.stringify(req.body), (err) => {
         if (err) throw err
+        res.end() // res.end() is mandatory to stop request ! otherwise its gonna stay in pending status
     })
 })
 

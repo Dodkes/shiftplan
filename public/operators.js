@@ -19,6 +19,11 @@ function getApiFromServer () {
     fetch('nslarray')
     .then((res)=> res.text())
     .then((data)=> nSLArray = JSON.parse(data))
+    // .then(setTimeout(() => {
+    //     renderMainGrid()
+    //     sumGridCounterUpdate()
+    //     firstTooltipRender()
+    // }, 1000))
     .then(renderMainGrid)
     .then(sumGridCounterUpdate)
     .then(firstTooltipRender)
