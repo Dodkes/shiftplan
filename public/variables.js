@@ -13,6 +13,7 @@ let dSLArray = []
 let nSLArray = []
 let myJSON
 let shiftPlanSwitch = true
+let anotationAvailable = true
 //Used colors
 const hoverColor = 'lightcoral'
 const white = 'white'

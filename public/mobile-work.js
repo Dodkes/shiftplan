@@ -3,34 +3,40 @@ const shiftPlanButton = document.getElementById('shiftplan-button')
 const mobileWorkButton = document.getElementById('mobile')
 const inOfficeButton = document.getElementById('in-office')
 const spTitle = document.getElementById('shiftplan-title')
+const refreshButton = document.getElementById('icon')
 let [inOffice, mobileWork] = [false, false]
 let buttons = ['dayshift', 'nightshift', 'vacation', 'paragraf', 'freeshift', 'shiftleader', 'remove', 'reset', 'mobile-work', 'save']
 
 const fadeSpeed = 200
 //MW plan switch button
-mobileWorkPlanButton.addEventListener('click', () => {
-    shiftPlanSwitch = false
-    controlPanelReset(null)
-    $('.mainGrid').fadeOut(fadeSpeed)
-    $('.controlPanel').slideUp(fadeSpeed)
-
-    setTimeout(() => {
-        renderMobileWorkGrid()
-        buttons.forEach(hideButtons)
-
-        spTitle.style.color = '#1aff66'
-        spTitle.textContent = 'Mobile work - '
-        document.getElementById('currentMonth').textContent = currentMonth
+function addMobileWorkClickEventListener () {
+    mobileWorkPlanButton.addEventListener('click', () => {
+        shiftPlanSwitch = false
+        controlPanelReset(null)
+        $('.mainGrid').fadeOut(fadeSpeed)
+        $('.controlPanel').slideUp(fadeSpeed)
     
-        showButtons('mobile')
-        showButtons('in-office')
-        showButtons('shiftplan-button')
-    }, fadeSpeed)
+        setTimeout(() => {
+            renderMobileWorkGrid()
+            buttons.forEach(hideButtons)
     
-    $('.mainGrid').fadeIn(fadeSpeed)
-    $('.controlPanel').slideDown(fadeSpeed)
+            spTitle.style.color = '#1aff66'
+            spTitle.textContent = 'Mobile work - '
+            document.getElementById('currentMonth').textContent = currentMonth
+        
+            showButtons('icon')
+            showButtons('mobile')
+            showButtons('in-office')
+            showButtons('shiftplan-button')
+        }, fadeSpeed)
+        
+        $('.mainGrid').fadeIn(fadeSpeed)
+        $('.controlPanel').slideDown(fadeSpeed)
+    
+    })
+}
 
-})
+
 
 function renderMobileWorkGrid () {
     let dayLoop = 1
@@ -80,6 +86,7 @@ shiftPlanButton.addEventListener('click', () => {
         hideButtons('mobile')
         hideButtons('in-office')
         hideButtons('shiftplan-button')
+        hideButtons('icon')
         renderMainGrid()
 
         spTitle.style.color = 'white'
@@ -163,4 +170,23 @@ function removeMobileWorkOnRemoveButton (e, shift) {
 
 function postMWToServer () {
     fetch('/api', {method: 'POST', headers: { 'Content-Type' : 'application/json'}, body: JSON.stringify(operatorsArray)})
+}
+
+refreshButton.addEventListener('click', () => {
+    if (anotationAvailable) {
+        fetch('/api')
+        .then((res)=> res.text())
+        .then((data)=> operatorsArray = JSON.parse(data))
+        .then(renderMobileWorkGrid)
+        .then(anotation)
+        .then(anotationAvailable = false)
+    }
+})
+
+function anotation () {
+    $('#anotation').slideDown('slow')
+    setTimeout(() => {
+    $('#anotation').slideUp('slow')
+    anotationAvailable = true
+    }, 2000);
 }
