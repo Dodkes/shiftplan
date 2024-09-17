@@ -12,6 +12,7 @@ function controlPanelReset(id) {
 
 console.log("Hello world!");
 console.log("Good bye world!");
+console.error("Error message!");
 
 function setup(id) {
   if (shiftPlanSwitch) {
