@@ -10,10 +10,6 @@ function controlPanelReset(id) {
   if (id) document.getElementById(id).style.outline = "0.2em solid #00e673";
 }
 
-console.log("Hello world!");
-console.log("Good bye world!");
-console.error("Error message!");
-
 function setup(id) {
   if (shiftPlanSwitch) {
     controlPanelReset(id);
